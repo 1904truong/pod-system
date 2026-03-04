@@ -1,0 +1,336 @@
+/* 1. LAYOUT TỔNG THỂ*/
+.category-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.category-main {
+  display: flex;
+  gap: 4rem;
+  margin-top: 12rem;
+  min-height: 100vh;
+}
+
+/* 2. SIDEBAR & ACCORDION (BỘ LỌC)*/
+.sidebar {
+  width: 28rem;
+  flex-shrink: 0;
+  position: sticky;
+  top: 12rem;
+  height: calc(100vh - 14rem);
+  overflow-y: auto;
+  padding-right: 1.5rem;
+}
+
+/* Tùy chỉnh thanh cuộn Sidebar cho mượt */
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: #e0e0e0;
+  border-radius: 10px;
+}
+
+.filter-group {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 1.5rem;
+}
+
+.filter-title {
+  font-size: 1.6rem;
+  font-weight: 550;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  user-select: none;
+}
+
+/* Icon & Hiệu ứng đóng mở */
+.chevron-icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+.chevron-icon.rotate {
+  transform: rotate(180deg);
+}
+
+.filter-content {
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
+}
+.filter-content.hide {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+}
+.filter-content.show {
+  max-height: 1000px;
+  opacity: 1;
+  margin-top: 1.5rem;
+}
+
+/* 3. BẢNG MÀU 3 CỘT (COLOR SWATCHES)*/
+.color-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem 1rem;
+}
+
+.color-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.color-circle {
+  width: 2.5rem; /* Kích thước nhỏ gọn đã chỉnh */
+  height: 2.5rem;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.color-option:hover .color-circle {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px #000;
+}
+
+.color-name {
+  font-size: 1.1rem;
+  margin-top: 0.8rem;
+  color: #666;
+  text-align: center;
+}
+
+.btn-toggle-colors {
+  background: none;
+  border: none;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-size: 1.3rem;
+}
+
+/* 4. PRODUCT CONTENT & HEADER */
+.product-content {
+  flex-grow: 1;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.breadcrumbs {
+  font-size: 1.5rem;
+  color: #757575;
+  font-weight: 500;
+}
+
+/* Màu xanh Catalog chuẩn ảnh mẫu */
+.breadcrumb-link {
+  color: #0056b3;
+  cursor: pointer;
+}
+/*khu tiền tệ */
+.sort-bar {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  font-size: 1.4rem;
+}
+
+/*5. CHỨC NĂNG TIỀN TỆ (CURRENCY CUSTOM) */
+.currency-selector-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.currency-label {
+  font-size: 1.5rem;
+  font-weight: 550;
+  color: #000;
+}
+
+.currency-select-box {
+  position: relative;
+  background-color: #e9ecef; /* Nền xám nhạt */
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+  min-width: 8.5rem;
+}
+
+/* Hiệu ứng viền xanh khi mở dropdown */
+.currency-select-box.active {
+  border-color: #0056b3;
+  background-color: #dbe2e9;
+}
+
+.currency-dropdown-list {
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  list-style: none;
+  width: 100%;
+  z-index: 100;
+  padding: 0.4rem 0;
+  overflow: hidden;
+}
+
+.currency-dropdown-list li {
+  padding: 0.8rem 1.2rem;
+  font-size: 1.4rem;
+  color: #333;
+  transition: background 0.2s;
+}
+
+.currency-dropdown-list li:hover {
+  background-color: #f1f3f5;
+}
+.currency-dropdown-list li.selected {
+  background-color: #e9ecef;
+  font-weight: 700;
+}
+
+.sort-select {
+  border: none;
+  background: transparent;
+  font-weight: 550;
+  font-size: 1.4rem;
+  cursor: pointer;
+  outline: none;
+}
+
+/*  6. PRODUCT GRID & FILTERS*/
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem 2rem;
+  padding-bottom: 5rem;
+}
+
+.filter-list {
+  list-style: none;
+}
+.filter-item {
+  margin-bottom: 1.2rem;
+  font-size: 1.4rem;
+}
+.filter-item input {
+  margin-right: 1.2rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/* NÚT VIEW MORE */
+.view-more-container {
+  display: flex;
+  justify-content: center;
+  margin: 5rem 0;
+}
+
+.btn-view-more {
+  padding: 1.2rem 4rem;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 3rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-view-more:hover {
+  background-color: #333;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* THANH BACK TO TOP NGANG */
+.back-to-top-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.5rem 0;
+  border-top: 1px solid #eee; /* Viền kẻ ngang trên */
+  border-bottom: 1px solid #eee; /* Viền kẻ ngang dưới */
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #333;
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  margin-top: 3rem;
+}
+
+.back-to-top-bar.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top-bar:hover {
+  background-color: #f9f9f9;
+  color: #000;
+}
+
+.back-to-top-bar i {
+  font-size: 1.2rem;
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+  .back-to-top {
+    right: 2rem;
+    bottom: 2rem;
+    width: 4rem;
+    height: 4rem;
+  }
+}
+@media (max-width: 768px) {
+  .category-main {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    position: static;
+    height: auto;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 2rem;
+  }
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1.5rem;
+  }
+}

@@ -1,0 +1,141 @@
+.footer {
+  background: #1a1a1a;
+  color: #ccc;
+  padding: 4rem 0 3rem;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+}
+
+.footer-inner {
+  padding: 0 4rem;
+}
+
+/* ── COLUMNS ── */
+.footer-cols {
+  display: flex;
+  align-items: flex-start;
+  gap: 6rem;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.footer-col h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 2rem;
+  white-space: nowrap;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  font-size: 1.35rem;
+  color: #aaa;
+  line-height: 1;
+  padding: 0.75rem 0;
+  cursor: pointer;
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+
+.footer-col ul li:hover {
+  color: #fff;
+}
+
+/* ── PAYMENT ICONS ── */
+.footer-payments {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.payment-icons {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.pay-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.2rem;
+  min-width: 5rem;
+  padding: 0 1rem;
+  background: #fff;
+  border-radius: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #1a1f71;
+  letter-spacing: 0.03em;
+  border: 1px solid #e0e0e0;
+}
+
+/* Mastercard */
+.pay-badge.mastercard {
+  gap: 0;
+  padding: 0 0.8rem;
+  position: relative;
+  min-width: 4.8rem;
+}
+
+.mc-left,
+.mc-right {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.mc-left {
+  background: #eb001b;
+  margin-right: -0.7rem;
+  position: relative;
+  z-index: 1;
+}
+
+.mc-right {
+  background: #f79e1b;
+}
+
+/* AMEX */
+.pay-badge.amex {
+  background: #007bc1;
+  color: #fff;
+  border-color: #007bc1;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+}
+
+/* PayPal */
+.pay-badge.paypal {
+  color: #003087;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.pay-badge.paypal span {
+  color: #009cde;
+}
+
+/* Klarna */
+.pay-badge.klarna {
+  background: #ffb3c7;
+  color: #17120e;
+  border-color: #ffb3c7;
+  font-size: 1.15rem;
+  font-weight: 700;
+}

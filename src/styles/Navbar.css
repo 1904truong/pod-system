@@ -1,0 +1,242 @@
+/* 1. CONTAINER TỔNG */
+.navbar-container {
+  width: 100%;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+/* Khi cuộn xuống, đẩy container lên bằng chiều cao top-bar (4.5rem) */
+.navbar-container.scrolled {
+  transform: translateY(-4.5rem);
+}
+
+/* 2. TOP BAR */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 4rem;
+  background-color: #f5f5f5;
+  height: 4.5rem;
+  box-sizing: border-box;
+  transition: opacity 0.2s ease;
+}
+
+.navbar-container.scrolled .top-bar {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.top-logo-img {
+  height: 3.5rem;
+  width: auto;
+}
+
+.sales__links {
+  text-decoration: none !important;
+}
+
+.sales__titles {
+  color: #000;
+  font-weight: 550;
+  font-size: 1.4rem;
+  text-decoration: none !important;
+  margin: 0;
+}
+
+.top-bar-links {
+  display: flex;
+  list-style: none;
+  gap: 1.2rem;
+}
+
+.top-bar-links li a {
+  text-decoration: none !important;
+  color: #000;
+  font-size: 1.2rem;
+}
+
+/* 3. MAIN NAV */
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4rem;
+  height: 6rem;
+  background: #fff;
+  position: relative;
+  z-index: 1001;
+}
+
+.nav-logo {
+  font-size: 2.6rem;
+  font-weight: 700;
+  flex: 1;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+  flex: 2;
+  justify-content: center;
+  height: 100%;
+}
+
+/* 4. MỤC MENU & GẠCH CHÂN */
+.menu-item {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+.menu-title {
+  font-size: 1.6rem;
+  font-weight: 550;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+  box-sizing: border-box;
+  text-decoration: none !important;
+}
+
+.menu-item:hover .menu-title,
+.menu-title.active {
+  border-bottom: 2px solid #000 !important;
+  color: #000;
+}
+
+/* 5. PHẦN ACTIONS */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  background: #f5f5f5;
+  padding: 0.8rem 1.5rem;
+  border-radius: 2.5rem;
+  width: 18rem;
+}
+
+.search-wrapper input {
+  border: none;
+  background: transparent;
+  outline: none;
+  margin-left: 1rem;
+}
+
+.action-icons {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 2rem;
+}
+
+/* 6. MEGA MENU PANEL */
+.mega-menu-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 1000;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mega-menu-panel.show {
+  max-height: 70vh;
+  padding: 5rem 10%;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: #fff;
+}
+
+.mega-menu-content {
+  display: flex;
+  justify-content: center;
+  gap: 10rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mega-menu-panel.show .mega-menu-content {
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+.mega-column {
+  min-width: 180px;
+  text-align: left;
+}
+
+.mega-column h4 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  color: #000;
+}
+
+.mega-column ul li {
+  font-size: 1.4rem;
+  color: #757575;
+  margin-bottom: 1.2rem;
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+.mega-column ul li:hover {
+  color: #000;
+}
+.mega-column ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.mega-column ul li {
+  font-size: 1.4rem;
+  color: #757575;
+  margin-bottom: 1.2rem;
+  cursor: pointer;
+  text-decoration: none !important;
+  list-style-type: none !important;
+}
+/* 7. OVERLAY - Nền mờ */
+.nav-overlay {
+  position: fixed;
+  top: 10.5rem;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s, top 0.3s ease;
+  z-index: 900;
+  /* Đảm bảo KHÔNG CÓ pointer-events: none ở đây */
+}
+
+.nav-overlay.visible {
+  visibility: visible;
+  opacity: 1;
+  /* pointer-events: none;  <-- XÓA HOẶC COMMENT DÒNG NÀY ĐI */
+  cursor: default; /* Để người dùng biết đây là vùng trống */
+}

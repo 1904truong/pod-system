@@ -1,0 +1,1391 @@
+.designer-wrapper {
+  background: #fff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+  overflow: hidden;
+}
+
+.designer-layout-v2 {
+  display: grid;
+  grid-template-columns: 320px 1fr 455px;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* thanh header */
+.designer-header-v2 {
+  display: grid;
+  grid-template-columns: 320px 1fr 456px;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  background: #fff;
+  height: 64px;
+  flex-shrink: 0;
+}
+.header-left-part {
+  padding-left: 20px;
+}
+.header-left-part h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+  color: #111;
+}
+.header-left-part span {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Edit/Preview */
+.header-center-part {
+  display: flex;
+  justify-content: end;
+  gap: 8px;
+  margin-right: 10px;
+}
+
+.btn-mode-tab {
+  padding: 6px 20px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-mode-tab.active {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+/* Header bên phải: Tiêu đề chi tiết */
+.header-right-part {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  border-left: 1px solid #e0e0e0; /* Đường kẻ dọc ranh giới Header */
+}
+.header-right-part h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0;
+}
+
+/* cột trái  */
+.left-panel-v2 {
+  border-right: 1px solid #e0e0e0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  position: relative;
+}
+
+.panel-header {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Thẻ sản phẩm */
+.active-product-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  margin-bottom: 10px;
+  position: relative;
+  transition: border-color 0.15s ease;
+}
+.active-product-card.selected {
+  border: 2px solid #0045c7;
+}
+.active-product-card:hover {
+  border-color: #aac0f0;
+}
+.prod-img img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.prod-meta {
+  flex: 1;
+  min-width: 0;
+}
+.prod-meta h4 {
+  font-size: 1.1rem;
+  margin: 0;
+  line-height: 1.3;
+  color: #111;
+  font-weight: 600;
+}
+.prod-meta span {
+  font-size: 1rem;
+  color: #888;
+}
+.more-btn-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+.more-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  transition: background 0.15s;
+}
+.more-btn:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+/* Dropdown menu */
+.product-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  min-width: 190px;
+  overflow: hidden;
+  padding: 4px 0;
+}
+.product-dropdown-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 12px 18px;
+  border: none;
+  background: none;
+  font-size: 1.2rem;
+  color: #222;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.product-dropdown-menu button:hover {
+  background: #f5f5f5;
+}
+.product-dropdown-menu button.disabled {
+  color: #bbb;
+  cursor: default;
+}
+.product-dropdown-menu button.disabled:hover {
+  background: none;
+}
+
+/* cột giữa */
+.canvas-section-v2 {
+  background: #f7f8f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  border-right: 1px solid #e0e0e0;
+  position: relative;
+}
+
+/* Front/Back */
+.side-switches {
+  display: flex;
+  background: #e0e0e0;
+  padding: 4px;
+  border-radius: 6px;
+  z-index: 10;
+  margin-bottom: 20px;
+
+  width: fit-content;
+  margin-left: 1px;
+  margin-right: auto;
+  z-index: 1;
+}
+.side-switches button {
+  padding: 6px 20px;
+  border: none;
+  background: none;
+  font-weight: 600;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.side-switches button.active {
+  background: #111;
+  color: #fff;
+}
+.main-canvas {
+  position: relative;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.shirt-img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+/* Khung in đứt đoạn */
+.print-safe-area {
+  position: absolute;
+  top: 25%;
+  width: 175px;
+  height: 200px;
+  border: 1.5px dashed #555;
+  pointer-events: none;
+}
+
+/* cột phải */
+.right-panel-v2 {
+  padding: 22px;
+  background: #fff;
+  border-left: 1px solid #e0e0e0;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.sub-label {
+  font-size: 1.5rem; /* kích thước tổng cột trái chữ */
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #3b3c3d;
+}
+.panel-content-area {
+  margin-top: -10px;
+}
+.layer-option-card {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.layer-option-card:hover {
+  border-color: #0045c7;
+}
+.icon-box {
+  font-size: 1.6rem;
+  color: #444;
+}
+.text-box h5 {
+  font-size: 1.3rem;
+  margin: 0 0 4px 0;
+  color: #111;
+}
+.text-box p {
+  font-size: 1.1rem;
+  color: #777;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Yêu cầu file in */
+.right-panel-v2 .file-specs ul li {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: #555;
+}
+.file-specs ul {
+  padding-left: 20px;
+  margin-top: 10px;
+  list-style-type: disc;
+}
+
+/* footer */
+.panel-content-area {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 80px;
+  margin-top: -10px;
+}
+
+/* Đường kẻ ngang mảnh ngay trên nút */
+.panel-footer-v2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 74px;
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
+  padding: 15px 20px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+}
+
+.add-prod-footer {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #0045c7;
+  color: #0045c7;
+  background: #fff;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary-continue {
+  width: 100%;
+  padding: 14px;
+  background: #0045c7;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+/* 8. add a new imgae */
+.image-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+/* Khung nội dung  */
+.image-modal-content {
+  background: #fff;
+  width: 905px;
+  height: 395px;
+
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: modalAppear 0.3s ease-out;
+}
+
+/* Header của Modal */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 25px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.modal-header h3 {
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin: 0;
+  color: #000;
+}
+.close-x {
+  background: none;
+  border: none;
+  font-size: 2.8rem;
+  cursor: pointer;
+  color: #333;
+  line-height: 1;
+}
+
+.modal-tabs {
+  display: flex;
+  padding: 0 25px;
+  border-bottom: 1px solid #e0e0e0;
+  gap: 30px;
+}
+.modal-tabs button {
+  padding: 15px 0;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-size: 1.5rem;
+  font-weight: 550;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.2s;
+}
+.modal-tabs button.active {
+  color: #111;
+  border-bottom-color: #0045c7;
+}
+
+.modal-body {
+  flex: 1;
+  padding: 20px 25px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+.upload-dropzone {
+  flex: 1;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.upload-dropzone i {
+  font-size: 3.5rem;
+  color: #444;
+  margin-bottom: 15px;
+}
+.upload-dropzone p {
+  font-size: 1.5rem;
+  color: #444;
+  margin: 0;
+}
+.browse-text {
+  color: #0045c7;
+  font-weight: 550;
+  cursor: pointer;
+  text-decoration: none;
+}
+.browse-text:hover {
+  text-decoration: underline;
+}
+
+/* Footer Modal */
+.modal-footer {
+  padding: 20px 25px;
+  border-top: 1px solid #e0e0e0;
+}
+.btn-save-disabled {
+  padding: 10px 25px;
+  background: #f5f5f5;
+  color: #bbb;
+  border: none;
+  border-radius: 4px;
+  font-weight: 550;
+  font-size: 1.5rem;
+  cursor: not-allowed;
+}
+
+.right-panel-v2 .panel-content-area {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 100px;
+}
+.image-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.image-modal-content {
+  background: #fff;
+  width: 905px;
+  height: 395px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: modalAppear 0.3s ease-out;
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 25px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.modal-header h3 {
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin: 0;
+  color: #000;
+}
+.close-x {
+  background: none;
+  border: none;
+  font-size: 2.8rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.modal-tabs {
+  display: flex;
+  padding: 0 25px;
+  border-bottom: 1px solid #e0e0e0;
+  gap: 30px;
+}
+.modal-tabs button {
+  padding: 15px 0;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-size: 1.5rem;
+  font-weight: 550;
+  cursor: pointer;
+  color: #666;
+}
+.modal-tabs button.active {
+  color: #111;
+  border-bottom-color: #0045c7;
+}
+
+.modal-body {
+  flex: 1;
+  padding: 20px 25px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+.upload-dropzone {
+  flex: 1;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.upload-dropzone i {
+  font-size: 3.5rem;
+  color: #444;
+  margin-bottom: 5px;
+}
+.upload-dropzone p {
+  font-size: 1.5rem;
+  color: #444;
+}
+
+.modal-footer {
+  padding: 20px 25px;
+  border-top: 1px solid #e0e0e0;
+}
+.btn-save-disabled {
+  padding: 10px 25px;
+  background: #f5f5f5;
+  color: #bbb;
+  border: none;
+  border-radius: 4px;
+  font-weight: 550;
+  font-size: 1.5rem;
+  cursor: not-allowed;
+}
+
+/* view custom image layer */
+
+.design-management {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.color-options {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+.color-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.color-circle.active {
+  border: 2px solid #0045c7;
+}
+
+.add-layer-dotted {
+  border: 1.5px dashed #ccc;
+  border-radius: 6px;
+  padding: 15px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.available-text {
+  font-size: 1.4rem;
+  color: #3b3c3d;
+  font-weight: 500;
+}
+.add-layer-dotted:hover {
+  border-color: #0045c7;
+  background: #f9faff;
+}
+.add-text-box h5 {
+  margin: 0px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: normal;
+  color: rgb(59, 60, 61);
+}
+.add-text-box p {
+  margin: 0px;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: normal;
+  color: rgb(129, 131, 135);
+  display: block;
+}
+.add-text-box strong {
+  color: #000;
+}
+
+/* --- Card Layer & Header --- */
+.layer-card-v2 {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 15px;
+  background: #fff;
+}
+.layer-card-header {
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.left-info {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.left-info i {
+  font-size: 18px;
+}
+.right-actions i {
+  font-size: 18px;
+}
+.drag-dots {
+  color: #aaa;
+  cursor: grab;
+}
+.right-actions {
+  display: flex;
+  gap: 15px;
+  color: #333;
+  font-size: 1.6rem;
+}
+.title-stack h5 {
+  margin: 0px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: normal;
+  color: rgb(59, 60, 61);
+}
+.title-stack p {
+  margin: 0px;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: normal;
+  color: rgb(129, 131, 135);
+  display: block;
+}
+
+/* --- CHI TIẾT KHI MỞ RỘNG (ẢNH 2) --- */
+
+.layer-card-body {
+  padding: 15px;
+  border-top: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Tạo khoảng cách giữa các cụm input */
+}
+
+/* 1. Prompt & Toggle */
+.input-group-v2 label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.input-with-toggle {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.input-with-toggle input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+}
+
+.shape-grid {
+  display: flex;
+  gap: 8px;
+  margin: 10px 0;
+}
+.shape-grid button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.shape-grid button.active {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+.radio-item input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #0045c7;
+  cursor: pointer;
+}
+
+/* 4. Size & Positioning (Lưới 2 cột) */
+.size-pos-grid {
+  display: grid;
+  grid-template-columns: 1fr 40px 1fr;
+  align-items: flex-end;
+  gap: 5px;
+}
+.size-pos-grid.no-link {
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.unit-input {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  transition: border-color 0.2s;
+}
+.unit-input:focus-within {
+  border-color: #0045c7;
+}
+.unit-input input {
+  border: none;
+  padding: 10px;
+  width: 100%;
+  outline: none;
+  font-size: 1.3rem;
+}
+.unit-input span {
+  padding-right: 10px;
+  color: #888;
+  font-size: 1.1rem;
+}
+
+/* 5. Align (6 nút sát nhau) */
+.align-buttons {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+}
+.align-buttons button {
+  height: 38px;
+  border: 1px solid #e0e0e0;
+  background: #f9f9f9;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.align-buttons button:hover {
+  background: #eee;
+  border-color: #ccc;
+}
+
+/* Link chữ xanh */
+.blue-link {
+  color: #666;
+  font-size: 1.4rem;
+  margin-top: 5px;
+  display: block;
+}
+.blue-bold {
+  color: #0045c7;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+/* --- customziable text layer --- */
+.full-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1.4rem;
+  outline: none;
+}
+
+.color-picker-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+}
+.color-preview {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid #eee;
+}
+.color-picker-input span {
+  flex: 1;
+  font-size: 1.4rem;
+  color: #111;
+}
+.edit-pencil {
+  color: #666;
+  font-size: 1.4rem;
+}
+
+.font-selector {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+.font-selector select {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1.4rem;
+  background: #fff;
+}
+.upload-font-link {
+  color: #111;
+  font-weight: 700;
+  font-size: 1.4rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Case buttons */
+.case-buttons {
+  display: flex;
+  gap: 8px;
+}
+.case-buttons button {
+  width: 45px;
+  height: 38px;
+  border: 1px solid #e0e0e0;
+  background: #f9f9f9;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.case-buttons button.active {
+  background: #222;
+  color: #fff;
+  border-color: #222;
+}
+
+/* Section Label */
+.section-label {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+/* Positioning Section */
+.position-section {
+  margin-top: 15px; /* Tạo khoảng cách với phần Size phía trên */
+}
+
+/* Tiêu đề chính "Positioning" */
+.position-section label {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111;
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* Hệ thống lưới chia 2 cột cho Left và Top */
+.size-pos-grid.no-link {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Chia đều 2 cột */
+  gap: 12px; /* Khoảng cách giữa 2 ô nhập liệu */
+}
+
+/* Nhãn phụ "Left" và "Top" */
+.sub-field-label {
+  font-size: 1.4rem;
+  color: #555;
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Khung bọc input và đơn vị mm */
+.unit-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+  transition: border-color 0.2s ease;
+}
+
+.unit-input:focus-within {
+  border-color: #0045c7; /* Đổi màu viền khi người dùng nhấn vào */
+}
+
+.unit-input input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  font-size: 1.4rem; /* Số mm hiển thị 1.4rem */
+  outline: none;
+  color: #111;
+  width: 100%;
+}
+
+/* Chữ "mm" nằm bên phải */
+.unit-input span {
+  padding-right: 12px;
+  color: #888;
+  font-size: 1.4rem; /* Đơn vị mm 1.4rem */
+  user-select: none;
+}
+
+/*  text-layer   */
+.align-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.align-buttons-grid button {
+  height: 40px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: #444;
+  transition: all 0.2s;
+}
+/* --- Cụm Font Section --- */
+.font-section label {
+  font-size: 1.6rem; /* Tiêu đề "Font" to rõ */
+  font-weight: 700;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.font-section .field {
+  margin-bottom: 15px;
+}
+
+.font-section .sub-field-label {
+  font-size: 1.4rem; /* Nhãn "Color", "Font" */
+  color: #111;
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Ô chọn màu Color Picker */
+.color-picker-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db; /* Viền xám nhạt chuẩn mẫu */
+  border-radius: 6px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.color-picker-box:hover {
+  border-color: #0045c7;
+}
+
+.color-sample {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid #eee;
+  flex-shrink: 0;
+}
+
+.color-picker-box span {
+  font-size: 1.4rem;
+  color: #444;
+  flex: 1; /* Đẩy icon về phía bên phải */
+}
+
+.color-picker-box i {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+/* Ô chọn Font Dropdown --- */
+.font-selector-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.font-dropdown {
+  flex: 1;
+  padding: 11px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1.4rem;
+  background-color: #fff;
+  outline: none;
+  cursor: pointer;
+}
+
+.upload-link {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #111;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.upload-link:hover {
+  text-decoration: underline;
+}
+.align-buttons-grid button.active {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+.unit-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0 12px;
+  background: #fff;
+}
+
+.unit-input input {
+  flex: 1;
+  border: none;
+  padding: 10px 0;
+  font-size: 1.4rem;
+  outline: none;
+}
+
+.unit-input span {
+  font-size: 1.4rem;
+  color: #888;
+  margin-left: 8px;
+}
+
+/* Các Label phụ */
+.sub-field-label {
+  font-size: 1.4rem;
+  color: #111;
+  font-weight: 500;
+  margin-bottom: 5px;
+  display: block;
+}
+/* mới preview */
+.preview-container {
+  width: 90%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.blank-notice {
+  background-color: #f0f2ff;
+  border: 1px solid #d0d7ff;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-size: 1.4rem;
+  color: #4a5edb;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  margin-top: -29px;
+}
+
+.main-preview-mockup {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.main-preview-mockup img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.mockup-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding-top: 10px;
+}
+
+.mockup-thumb {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mockup-thumb img {
+  width: 90%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.mockup-thumb.active img {
+  border: 2px solid #111;
+}
+.mockup-thumb span {
+  font-size: 1.1rem;
+  color: #666;
+  margin-top: 6px;
+  line-height: 1.2;
+  text-align: left;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.mockup-thumb:hover img {
+  border-color: #0045c7;
+}
+/* chọn màu */
+/* color-section bọc ngoài: position relative để popover anchor đúng chỗ */
+.color-section {
+  position: relative;
+}
+
+/* Container bọc hàng màu và nút add */
+.color-options-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.selected-colors-list {
+  display: flex;
+  gap: 8px;
+}
+
+/* Bảng Popover màu – dùng chung cho cả 3 view */
+.color-picker-popover {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  width: 440px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  z-index: 200; /* cao hơn các phần tử khác trong panel */
+  animation: popoverFadeIn 0.15s ease-out;
+}
+
+/* Animation mở mượt khi popover xuất hiện */
+@keyframes popoverFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.popover-header {
+  font-size: 1.4rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.select-all-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.4rem;
+  color: #666;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.select-all-row input {
+  width: 18px;
+  height: 18px;
+}
+
+/* Lưới 21 màu */
+.color-grid-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.color-item {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.color-item:hover {
+  transform: scale(1.1);
+}
+
+.color-item i {
+  font-size: 1.2rem;
+}
+
+.more-count {
+  font-size: 1.2rem;
+  color: #888;
+  display: flex;
+  align-items: center;
+}
+
+/* ── Nút "+" mở bảng chọn màu ── */
+.color-add {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px dashed #aaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #555;
+  font-size: 1.4rem;
+  transition: border-color 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+.color-add:hover {
+  border-color: #0045c7;
+  color: #0045c7;
+}
+
+/* ── Màu đã chọn hiển thị hàng ngoài ── */
+.color-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.color-circle.active {
+  border: 2.5px solid #0045c7;
+  box-shadow: 0 0 0 1px rgba(0, 69, 199, 0.25);
+}

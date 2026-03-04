@@ -1,0 +1,164 @@
+
+.login-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: #d1e4ff; 
+}
+.login-card-wrapper {
+  display: flex;
+  margin: auto;
+  width: 90rem; 
+  min-height: 50rem; 
+  border-radius: 3rem;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+}
+.login-left {
+  flex: 0.9 ;
+  background: linear-gradient(180deg, #0056d2 0%, #003a91 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  padding: 0 80px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-left h1 { 
+  font-size: 4rem; 
+  margin-bottom: 10px; 
+}
+.login-left p { 
+  font-size: 1.6rem; 
+  opacity: 0.8; 
+  margin-bottom: 30px; 
+}
+
+.btn-read-more {
+  width: fit-content;
+  padding: 5px 25px;
+  background: #007bff;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  margin-left: 11rem;
+}
+
+/* Cột phải: Form đăng nhập */
+.login-right {
+  flex: 1;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 60px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.login-form-wrapper { 
+  max-width: 350px; 
+  margin: 0 auto; 
+  width: 100%; 
+}
+.login-form-wrapper h2 { 
+  font-size: 2.8rem; 
+  margin-bottom: 5px; 
+}
+.login-form-wrapper .welcome-back { 
+  color: #666; 
+  margin-bottom: 30px; 
+  font-size: 1.4rem; 
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #eee;
+  border-radius: 25px;
+  padding: 12px 20px;
+  margin-bottom: 15px;
+}
+
+.input-box input {
+  border: none;
+  outline: none;
+  margin-left: 10px;
+  width: 100%;
+  font-size: 1.4rem;
+}
+.input-box i {
+  font-size: 1.5rem;
+  color: #C2C2C2;  
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-login-main {
+  width: 100%;
+  padding: 15px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.forgot-pass {
+  text-align: center;
+  display: block;
+  margin-top: 15px;
+  color: #888;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+/* Chức năng Ảnh 2: Nút mạng xã hội */
+.social-login-section { 
+  margin-top: 30px; 
+  text-align: center; 
+}
+.social-login-section p { 
+  color: #aaa; 
+  font-size: 1.2rem; 
+  margin-bottom: 15px; 
+}
+.social-btns { 
+  display: flex; 
+  gap: 10px; 
+  justify-content: center; 
+}
+.social-btn {
+  display: flex;
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #eee;
+  background: white;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  align-items: center;    
+  justify-content: center; 
+  gap: 10px;
+}
+.social-btn i {
+  font-size: 1.8rem;
+}
+
+.icon-fb { color: #1877F2; }
+.icon-gl { 
+  background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
+}
+.icon-app { color: #000000; }
