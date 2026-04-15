@@ -1,0 +1,355 @@
+.artwork-library-container {
+  padding: 2.4rem 4rem;
+  max-width: 140rem;
+  margin: 0 auto;
+}
+
+.artwork-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.4rem;
+  color: #3b82f6;
+  margin-bottom: 2.4rem;
+}
+
+.artwork-breadcrumb span {
+  color: #64748b;
+}
+
+.artwork-header {
+  margin-bottom: 4rem;
+}
+
+.artwork-header h1 {
+  font-size: 3.6rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.artwork-header p {
+  font-size: 1.55rem;
+  line-height: 1.6;
+  color: #64748b;
+  max-width: 100rem;
+}
+
+/* List Controls */
+.library-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.library-controls h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.control-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.btn-add-image {
+  background-color: #0052cc;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.4rem;
+  padding: 0.8rem 1.6rem;
+  font-size: 1.45rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: background 0.2s;
+}
+
+.btn-add-image:hover {
+  background-color: #0747a6;
+}
+
+.view-switcher {
+  display: flex;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.4rem;
+  overflow: hidden;
+}
+
+.view-btn {
+  background-color: #ffffff;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  color: #64748b;
+  cursor: pointer;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.view-btn.active {
+  background-color: #0052cc;
+  color: #ffffff;
+}
+
+/* Asset Table */
+.artwork-table-wrapper {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.6rem;
+  overflow: hidden;
+}
+
+.artwork-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.artwork-table th {
+  padding: 1.2rem 2rem;
+  text-align: left;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.artwork-row {
+  border-bottom: 1px solid #f1f5f9;
+  transition: background 0.15s;
+}
+
+.artwork-row:hover {
+  background-color: #f8fafc;
+}
+
+.artwork-row td {
+  padding: 1.6rem 2rem;
+  vertical-align: middle;
+}
+
+.image-cell {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.thumbnail-box {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 0.4rem;
+  background-image: 
+    linear-gradient(45deg, #f0f0f0 25%, transparent 25%), 
+    linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #f0f0f0 75%), 
+    linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+  background-size: 10px 10px;
+  background-position: 0 0, 0 5px, 5px 5px, 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.thumbnail-box img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+.image-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.meta-id {
+  font-size: 1.15rem;
+  color: #94a3b8;
+}
+
+.meta-name {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.meta-filename {
+  font-size: 1.35rem;
+  color: #64748b;
+}
+
+.creator-cell {
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.date-cell {
+  font-size: 1.35rem;
+  color: #64748b;
+}
+
+.options-cell {
+  display: flex !important;
+  align-items: center;
+  gap: 1.5rem;
+  justify-content: flex-end;
+}
+
+.btn-delete-artwork {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-delete-artwork:hover {
+  background: #fef2f2;
+  color: #ef4444;
+}
+
+.btn-delete-artwork i {
+  font-size: 1.6rem;
+}
+
+.btn-more-options {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.btn-more-options:hover {
+  color: #1e293b;
+}
+
+.btn-more-options i {
+  font-size: 1.8rem;
+}
+
+/* Pagination */
+.library-pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 1.6rem 2rem;
+  font-size: 1.35rem;
+  color: #64748b;
+}
+
+.pagination-arrows {
+  display: flex;
+  gap: 2.4rem;
+}
+
+.pagination-arrows i {
+  cursor: pointer;
+  color: #cbd5e1;
+  font-size: 1.4rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.btn-edit-artwork {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  transition: all 0.2s ease;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-edit-artwork:hover {
+  background: #f0f9ff;
+  color: #0ea5e9;
+}
+
+.edit-title-box {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0.4rem 0;
+}
+
+.edit-title-input {
+  border: 1.5px solid #3b82f6;
+  border-radius: 0.6rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1e293b;
+  width: 22rem;
+  outline: none;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+}
+
+.btn-save-title {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-save-title:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+}
+
+.btn-cancel-title {
+  background-color: #f1f5f9;
+  color: #64748b;
+  border: none;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-cancel-title:hover {
+  background-color: #e2e8f0;
+  color: #1e293b;
+}

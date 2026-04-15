@@ -1,8 +1,18 @@
 import React, { useState } from "react";
-import "../styles/ProductCard.css"; /* CSS riêng cho ProductCard */
+import { useNavigate } from "react-router-dom";
+import "../styles/ProductCard.css";
+import useActiveStoreDiscount from "../hooks/useActiveStoreDiscount";
+import { calculateDiscountedPrice, isDiscountApplicable } from "../utils/discountUtils";
+import MockupWithDesign from "./MockupWithDesign";
 
-const ProductCard = ({ product }) => {
-  const [isLiked, setIsLiked] = useState(false);
+const ProductCard = ({ product, liked, onToggleLike }) => {
+  const navigate = useNavigate();
+  const [internalLiked, setInternalLiked] = useState(false);
+  const isLiked = typeof liked === "boolean" ? liked : internalLiked;
+  
+  const designerDraft = product.designerDraft;
+  const baseProduct = product.baseProduct;
+
   const colors = product.colors || [
     { hex: "#ffc0cb" },
     { hex: "#800000" },
@@ -36,19 +46,63 @@ const ProductCard = ({ product }) => {
   const visibleColors = colors.slice(0, MAX_DOTS);
   const extraCount = colors.length - MAX_DOTS;
 
+  const { discountInPlay } = useActiveStoreDiscount();
+
   const handleHeartClick = (e) => {
     e.stopPropagation();
-    setIsLiked(!isLiked);
+    if (typeof onToggleLike === "function") {
+      onToggleLike(!isLiked);
+    } else {
+      setInternalLiked(!isLiked);
+    }
   };
 
-  const isWhite = (hex) => hex === "#ffffff" || hex === "#fff";
+  // Logic to determine if a discount applies and calculate the new price
+  const originalPriceNum = parseFloat(String(product.price || "0").replace(/[^0-9.]/g, ""));
+  const applies = isDiscountApplicable(discountInPlay, product.campaignId || product.id);
+  const discountedPriceNum = applies ? calculateDiscountedPrice(originalPriceNum, discountInPlay) : originalPriceNum;
+  const hasDiscount = applies && discountedPriceNum < originalPriceNum;
+
+  const resolveImageUrl = (value) => {
+    if (!value || typeof value !== "string") return null;
+    if (/^https?:\/\//i.test(value)) return value;
+    if (value.startsWith("data:")) return value;
+    
+    // If it's already an absolute path (starts with /)
+    if (value.startsWith("/")) {
+      if (value.startsWith("/uploads")) return `http://localhost:5000${value}`;
+      return value;
+    }
+
+    if (value.startsWith("assets/")) return `/${value}`;
+    return `/assets/${value}`;
+  };
+
+  const imageSrc = resolveImageUrl(product.imageUrl || product.image);
 
   return (
     /* ── CARD WRAPPER ── */
-    <div className="product-card">
+    <div 
+      className="product-card" 
+      onClick={() => navigate(`/product/${product.id}`)}
+      style={{ cursor: 'pointer' }}
+    >
       {/* ── ẢNH SẢN PHẨM ── */}
       <div className="product-image">
-        <img src={`/assets/${product.image}`} alt={product.name} />
+        {designerDraft ? (
+          <MockupWithDesign
+            key={`mockup-${product.id}`}
+            mockupSrc={imageSrc}
+            alt={product.name}
+            product={product}
+            designerDraft={designerDraft}
+            variant="preview"
+          />
+        ) : imageSrc ? (
+          <img src={imageSrc} alt={product.name} />
+        ) : (
+          <div className="product-image-fallback">No image</div>
+        )}
 
         {/* Icon tim yêu thích */}
         <div
@@ -91,7 +145,20 @@ const ProductCard = ({ product }) => {
         <p className="p-type">{product.label || "Classic Unisex T-shirt"}</p>
 
         {/* Giá */}
-        <p className="p-price">{product.price}</p>
+        <p className="p-price">
+          {hasDiscount ? (
+            <>
+              <span className="p-price-original" style={{ textDecoration: 'line-through', color: '#94a3b8', marginRight: '0.8rem', fontSize: '1.3rem' }}>
+                {product.price}
+              </span>
+              <span className="p-price-discounted" style={{ color: '#16a34a', fontWeight: 'bold' }}>
+                ${discountedPriceNum.toFixed(2)}
+              </span>
+            </>
+          ) : (
+            product.price
+          )}
+        </p>
       </div>
     </div>
   );

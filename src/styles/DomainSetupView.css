@@ -1,0 +1,157 @@
+.domain-setup-container {
+  padding: 2.4rem 4rem;
+  max-width: 100rem;
+  margin: 0 auto;
+}
+
+.domain-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 1.45rem;
+  color: #64748b;
+  margin-bottom: 3.2rem;
+}
+
+.domain-breadcrumb a {
+  color: #2563eb;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.domain-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.domain-breadcrumb .separator {
+  color: #cbd5e1;
+}
+
+.domain-header h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 2rem;
+}
+
+.domain-header p {
+  font-size: 1.55rem;
+  line-height: 1.6;
+  color: #64748b;
+  max-width: 80rem;
+  margin-bottom: 4.8rem;
+}
+
+.domain-step-section {
+  margin-bottom: 4rem;
+}
+
+.step-label {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.8rem;
+}
+
+.step-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 1.6rem;
+}
+
+.step-description {
+  font-size: 1.45rem;
+  color: #64748b;
+  margin-bottom: 2.4rem;
+}
+
+.input-label {
+  display: block;
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 0.8rem;
+}
+
+.domain-input-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.domain-input-wrapper {
+  flex: 1;
+  max-width: 44rem;
+}
+
+.domain-input {
+  width: 100%;
+  padding: 1.2rem 1.6rem;
+  font-size: 1.45rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.6rem;
+  background: #ffffff;
+  transition: all 0.15s;
+  color: #1e293b;
+}
+
+.domain-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.domain-input.error {
+  border-color: #ef4444;
+}
+
+.btn-connect-domain {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.2rem 2.4rem;
+  font-size: 1.45rem;
+  font-weight: 600;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.6rem;
+  background: #f8fafc;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-connect-domain:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.btn-connect-domain.active {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 1.25rem;
+  margin-top: 0.6rem;
+}
+
+/* Specific button icons */
+.btn-connect-domain i {
+  font-size: 1.4rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}

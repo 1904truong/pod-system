@@ -7,12 +7,20 @@
 /* Hero Banner */
 .hero-banner {
   height: 45rem;
-  background: #f0f0f0;
+  background-color: #f0f0f0;
+  background-image: url("../src/assets/banner/banner_main.png");
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
   border-radius: 1.5rem;
   margin: 12rem 0 2rem 0;
   display: flex;
   align-items: center;
   padding-left: 6rem;
+}
+
+.hero-content {
+  color: #fff;
 }
 
 .hero-content h1 {
@@ -81,12 +89,17 @@
   background-color: #e0e0e0;
 }
 
+.grid-item.best-seller {
+  color: red;
+  background-image: url("../src/assets/banner/bestseller.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .fashion {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
-}
-.accessories,
-.more {
 }
 .featured-grid {
   grid-template-columns: 0.5fr 0.5fr 1fr;
@@ -100,16 +113,32 @@
 .fashion {
   grid-column: 1 / 3;
   grid-row: 1 / 2;
+  background-color: #eee;
+  background-image: url("../src/assets/banner/fashion.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
 }
 
 .accessories {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
+  background-image: url("../src/assets/banner/accessioces.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
 }
 
 .more {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
+  background-image: url("../src/assets/banner/more.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
 }
 
 /* list contry*/
@@ -254,165 +283,24 @@
   border-color: #111;
 }
 
-/* DESIGN INSPIRATION */
-.design-inspiration {
-  margin: 2rem 0;
-  padding: 3rem 3rem;
-  background-color: #fafafa;
-  border-radius: 2.5rem;
+/* ── UTILITIES FOR CURATOR THEME ── */
+.font-headline {
+  font-family: "Inter", sans-serif;
 }
 
-.section-label {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
+.font-body {
+  font-family: "Noto Serif", serif;
 }
 
-.quote-text {
-  font-size: 1.6rem;
-  color: #666;
-  border-left: 4px solid #000;
-  padding-left: 2rem;
-  font-style: italic;
-  margin: 0 0 2rem 0;
+.text-secondary {
+  color: #5f5e5e;
 }
 
-.idea-carousel {
-  display: flex;
-  gap: 2.5rem;
-  overflow-x: auto;
-  padding: 3rem 0;
-  scrollbar-width: none;
+.tonal-separation {
+  background-color: #f3f3f4;
 }
 
-.idea-carousel::-webkit-scrollbar {
-  display: none;
-}
-
-.idea-card {
-  flex: 0 0 32rem;
-  background: #fff;
-  border-radius: 1.8rem;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  border: 1px solid #000;
-  transition: 0.3s ease;
-}
-
-/* Hiệu ứng viền xanh khi chọn như ảnh mẫu bạn gửi */
-.idea-card:hover {
-  /* border-color: #007bff; */
-  transform: translateY(-8px);
-}
-
-.idea-image {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4/3;
-  background: #eee;
-}
-.idea-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.badge {
-  position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
-  background: #ff7a00; /* Màu cam nổi bật */
-  color: #fff;
-  padding: 0.4rem 1.2rem;
-  border-radius: 0.6rem;
-  font-weight: 600;
-  font-size: 1.2rem;
-}
-
-.btn-apply {
-  width: 100%;
-  padding: 1.2rem;
-  background: #111;
-  color: #fff;
-  border: none;
-  border-radius: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-/* CUSTOM UPLOAD BOX */
-.custom-upload-box {
-  margin-top: 6rem;
-  padding: 4rem;
-  background: #fff;
-  border: 2px dashed #ddd;
-  border-radius: 2rem;
-  text-align: center;
-}
-
-.upload-inner i {
-  font-size: 4rem;
-  margin-bottom: 2rem;
-  color: #111;
-}
-.upload-inner h3 {
-  font-size: 2.4rem;
-  margin-bottom: 1rem;
-}
-.btn-upload {
-  margin-top: 2rem;
-  padding: 1.2rem 4rem;
-  background: #000;
-  color: #fff;
-  border-radius: 5rem;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-}
-
-/* DESIGN INSPIRATION GRID */
-.idea-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 card mỗi hàng */
-  gap: 2rem;
-  margin-top: 1rem;
-}
-/* Responsive cho phần Design Ideas */
-@media (max-width: 1024px) {
-  .idea-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 cột trên máy tính bảng */
-  }
-}
-
-@media (max-width: 600px) {
-  .idea-grid {
-    grid-template-columns: 1fr; /* 1 cột duy nhất trên điện thoại */
-    gap: 1.5rem;
-  }
-}
-/* Container chứa các nút điều hướng của section */
-.view-more-container {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin: 4rem 0;
-}
-/* hiệu ứng view more*/
-/* Animation fadeInUp – dùng cho idea-card (product-card đã chuyển sang ProductCard.css) */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.idea-card {
-  animation: fadeInUp 0.5s ease backwards;
-}
+/* ──────────────────────────────── */
 .idea-card:nth-child(1) {
   animation-delay: 0.1s;
 }
@@ -644,5 +532,213 @@
   }
   100% {
     background-position: -200% 0;
+  }
+}
+
+/* ══════════════════════════════════════════
+   COMPREHENSIVE RESPONSIVE DESIGN - ALL DEVICES
+══════════════════════════════════════════ */
+
+/* MOBILE (< 640px) */
+@media (max-width: 639px) {
+  .home-container {
+    padding: 0 1rem;
+  }
+
+  .hero-banner {
+    height: 25rem;
+    margin: 8rem 0 1.5rem 0;
+    padding-left: 1.5rem;
+    border-radius: 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero_des {
+    font-size: 0.95rem;
+  }
+
+  .btn-shop {
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .featured-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    height: auto;
+    margin: 2rem 0;
+  }
+
+  .best-seller {
+    grid-column: 1 / 2 !important;
+    grid-row: auto !important;
+  }
+
+  .fashion {
+    grid-column: 1 / 2 !important;
+    grid-row: auto !important;
+  }
+
+  .accessories {
+    grid-column: 1 / 2 !important;
+    grid-row: auto !important;
+  }
+
+  .more {
+    grid-column: 1 / 2 !important;
+    grid-row: auto !important;
+  }
+
+  .grid-item {
+    padding: 1.5rem;
+    font-size: 1.3rem;
+  }
+
+  .region-title {
+    font-size: 1.8rem;
+  }
+
+  .region-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .country {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .region-intro {
+    margin-bottom: 1.5rem;
+  }
+
+  .spotlight-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+}
+
+/* SMALL TABLETS (640px - 768px) */
+@media (min-width: 640px) and (max-width: 768px) {
+  .home-container {
+    padding: 0 1.5rem;
+  }
+
+  .hero-banner {
+    height: 30rem;
+    margin: 10rem 0 2rem 0;
+    padding-left: 3rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2.8rem;
+  }
+
+  .featured-grid {
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+    gap: 1.2rem;
+    margin: 2.5rem 0;
+  }
+
+  .grid-item {
+    padding: 2rem;
+    font-size: 1.5rem;
+  }
+
+  .region-title {
+    font-size: 2.3rem;
+  }
+
+  .spotlight-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* TABLETS (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .home-container {
+    padding: 0 1.8rem;
+  }
+
+  .hero-banner {
+    height: 35rem;
+    margin: 10rem 0 2.5rem 0;
+    padding-left: 4rem;
+  }
+
+  .hero-content h1 {
+    font-size: 3.5rem;
+  }
+
+  .featured-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    height: 40rem;
+  }
+
+  .best-seller {
+    grid-column: 3 / 4;
+    grid-row: 1 / 3;
+  }
+
+  .region-title {
+    font-size: 2.8rem;
+  }
+
+  .spotlight-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* DESKTOPS (1024px - 1440px) */
+@media (min-width: 1024px) and (max-width: 1440px) {
+  .home-container {
+    padding: 0 2rem;
+  }
+
+  .hero-content h1 {
+    font-size: 4rem;
+  }
+
+  .featured-grid {
+    height: 55rem;
+  }
+
+  .region-title {
+    font-size: 3rem;
+  }
+}
+
+/* LARGE DESKTOPS (> 1440px) */
+@media (min-width: 1441px) {
+  .featured-grid {
+    height: 60rem;
+  }
+
+  .region-title {
+    font-size: 3.2rem;
+  }
+}
+
+/* Extra small (< 320px) */
+@media (max-width: 319px) {
+  .hero-banner {
+    height: 20rem;
+    padding-left: 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .featured-grid {
+    gap: 0.8rem;
+  }
+
+  .grid-item {
+    padding: 1rem;
+    font-size: 1.1rem;
   }
 }

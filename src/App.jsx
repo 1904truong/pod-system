@@ -13,8 +13,16 @@ import Signup from "./pages/signup";
 import CategoryPage from "./pages/CategoryPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import DesignerPage from "./pages/DesignerPage";
+import SetPricingPage from "./pages/SetPricingPage";
+import ReviewProductsPage from "./pages/ReviewProductsPage";
 // 1. Import trang AddPage mới
 import AddPage from "./pages/AddPage";
+import StoreLaunchView from "./pages/StoreLaunchView";
+import CatalogProductDetail from "./pages/CatalogProductDetail";
+import CheckoutPage from "./pages/CheckoutPage";
+import ProtectedRoute from "./components/ProtectedRoute";
+import AboutPage from "./pages/AboutPage";
+import HelpPage from "./pages/HelpPage";
 
 function App() {
   return (
@@ -28,11 +36,20 @@ function App() {
         <Route path="/category" element={<CategoryPage />} />
 
         {/* :id là mã định danh riêng của từng sản phẩm */}
-        <Route path="/product" element={<ProductDetailPage />} />
+        <Route path="/product/:id" element={<ProductDetailPage />} />
 
-        <Route path="/designer" element={<DesignerPage />} />
-        {/* Đường dẫn này hiện ra trang All Products theo ảnh mẫu */}
-        <Route path="/addpage" element={<AddPage />} />
+        {/* 👑 NHÓM ADMIN */}
+        <Route path="/addpage" element={<ProtectedRoute allowedRoles={['admin']}><AddPage /></ProtectedRoute>} />
+        <Route path="/designer" element={<ProtectedRoute allowedRoles={['admin']}><DesignerPage /></ProtectedRoute>} />
+        <Route path="/pricing" element={<ProtectedRoute allowedRoles={['admin']}><SetPricingPage /></ProtectedRoute>} />
+        <Route path="/review" element={<ProtectedRoute allowedRoles={['admin']}><ReviewProductsPage /></ProtectedRoute>} />
+        <Route path="/catalog-product/:id" element={<ProtectedRoute allowedRoles={['admin']}><CatalogProductDetail /></ProtectedRoute>} />
+
+        {/* 👤 NHÓM KHÁCH HÀNG (CÔNG KHAI) */}
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/help" element={<HelpPage />} />
+        <Route path="/store/:storeUrl" element={<StoreLaunchView />} />
+        <Route path="/checkout" element={<ProtectedRoute allowedRoles={['customer']}><CheckoutPage /></ProtectedRoute>} />
 
         {/* Đường dẫn cho Login và Signup */}
         <Route path="/login" element={<Login />} />

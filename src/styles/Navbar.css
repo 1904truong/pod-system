@@ -7,12 +7,21 @@
   left: 0;
   z-index: 1000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, top 0.3s ease;
 }
 
-/* Khi cuộn xuống, đẩy container lên bằng chiều cao top-bar (4.5rem) */
+.navbar-container.has-banner {
+  top: var(--discount-banner-height, 0px);
+}
+
+/* Khi cuộn xuống quá 40px, đẩy container lên bằng chiều cao top-bar (4.5rem) */
 .navbar-container.scrolled {
   transform: translateY(-4.5rem);
+}
+
+/* Headroom: Ẩn TOÀN BỘ Navbar khi cuộn xuống (navbar--hidden) */
+.navbar-container.navbar--hidden {
+  transform: translateY(-100%);
 }
 
 /* 2. TOP BAR */
@@ -24,7 +33,9 @@
   background-color: #f5f5f5;
   height: 4.5rem;
   box-sizing: border-box;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.3s ease; /* Tăng thời gian transition */
+  position: relative;
+  z-index: 1002;
 }
 
 .navbar-container.scrolled .top-bar {
@@ -37,8 +48,31 @@
   width: auto;
 }
 
+.top-logo-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.top-bar-left {
+  flex: 0 0 auto;
+}
+
+.sales {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 0 1.2rem;
+}
+
 .sales__links {
   text-decoration: none !important;
+  background: #bfe8cf;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.6rem;
+  display: inline-flex;
+  align-items: center;
 }
 
 .sales__titles {
@@ -53,6 +87,9 @@
   display: flex;
   list-style: none;
   gap: 1.2rem;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
 }
 
 .top-bar-links li a {
@@ -77,6 +114,13 @@
   font-size: 2.6rem;
   font-weight: 700;
   flex: 1;
+}
+
+.nav-logo-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
 }
 
 .nav-menu {
@@ -221,7 +265,7 @@
 /* 7. OVERLAY - Nền mờ */
 .nav-overlay {
   position: fixed;
-  top: 10.5rem;
+  top: calc(10.5rem + var(--discount-banner-height, 0px));
   left: 0;
   width: 100%;
   height: 100vh;
@@ -239,4 +283,191 @@
   opacity: 1;
   /* pointer-events: none;  <-- XÓA HOẶC COMMENT DÒNG NÀY ĐI */
   cursor: default; /* Để người dùng biết đây là vùng trống */
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE DESIGN FOR NAVBAR
+══════════════════════════════════════════ */
+
+@media (max-width: 639px) {
+  .navbar {
+    padding: 0.8rem 1rem;
+  }
+
+  .navbar-top h1 {
+    font-size: 1.5rem;
+    letter-spacing: -0.3px;
+  }
+
+  .navbar-icons-top {
+    gap: 0.6rem;
+  }
+
+  .icon-nav-btn {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.1rem;
+  }
+
+  .navbar-main {
+    padding: 0.6rem 1rem;
+  }
+
+  .navbar-main-btn {
+    font-size: 1.1rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1024px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+
+  .navbar-top h1 {
+    font-size: 1.8rem;
+  }
+
+  .navbar-icons-top {
+    gap: 0.8rem;
+  }
+
+  .icon-nav-btn {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  .navbar-main {
+    padding: 0.8rem 1rem;
+  }
+
+  .navbar-main-btn {
+    font-size: 1.2rem;
+    padding: 0.7rem 1.2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .navbar {
+    padding: 1.2rem 2rem;
+  }
+
+  .navbar-top h1 {
+    font-size: 2rem;
+  }
+
+  .navbar-main-btn {
+    font-size: 1.3rem;
+  }
+}
+
+/* 8. USER DROPDOWN */
+.user-menu-trigger {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.user-menu-trigger:hover {
+  opacity: 0.7;
+}
+
+.user-menu-trigger i {
+  font-size: 1.3rem; 
+}
+
+.user-dropdown-panel {
+  position: absolute;
+  top: 100%;
+  right: -10px;
+  margin-top: 14px;
+  width: 240px;
+  background-color: #fff;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08), 0 2px 10px rgba(0,0,0,0.04);
+  border-radius: 12px;
+  padding: 8px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  color: #333;
+  text-align: left;
+  text-transform: none;
+  border: 1px solid #f0f0f0;
+}
+
+/* Nối cầu để hover không bị ngắt quãng */
+.user-dropdown-panel::before {
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: 0;
+  right: 0;
+  height: 16px;
+}
+
+.dropdown-header {
+  padding: 12px 12px 16px 12px;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 8px;
+}
+
+.dropdown-header .user-name {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: #111;
+}
+
+.dropdown-header .user-email {
+  margin: 4px 0 0;
+  font-size: 1.2rem;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-btn {
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 1.3rem;
+  padding: 10px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s, color 0.2s;
+  color: #444;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dropdown-btn i {
+  font-size: 1.4rem;
+  color: #888;
+  width: 16px;
+  text-align: center;
+}
+
+.dropdown-btn:hover {
+  background-color: #f5f5f5;
+  color: #000;
+}
+
+.dropdown-btn.logout {
+  color: #e53e3e;
+  margin-top: 4px;
+}
+.dropdown-btn.logout i {
+  color: #e53e3e;
+}
+.dropdown-btn.logout:hover {
+  background-color: #fff5f5;
+  color: #c53030;
 }

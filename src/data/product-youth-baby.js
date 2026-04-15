@@ -114,8 +114,8 @@ export const productsYB=[
         category: "yb", 
         subCategory: "hoodies", 
         name: "Kids' Hoodie", 
-        brand: "Gildan 5000B",
-        technology: "AWDis JH001J",
+        brand: "AWDis JH001J",
+        technology: "DTG",
         fulfilledFrom: [ "Europe"],
         sizes: { total: 5, range: "3/4Y-12/13Y" },
         colors: [

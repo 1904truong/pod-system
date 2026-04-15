@@ -637,3 +637,162 @@
     gap: 2rem 1.5rem;
   }
 }
+
+/* ══════════════════════════════════════════
+   COMPREHENSIVE RESPONSIVE DESIGN
+══════════════════════════════════════════ */
+
+/* MOBILE (< 640px) */
+@media (max-width: 639px) {
+  .product-detail-container {
+    padding: 1rem;
+  }
+
+  .product-gallery {
+    width: 100%;
+    height: 200px;
+  }
+
+  .product-gallery img {
+    height: 200px;
+  }
+
+  .gallery-thumbnails {
+    gap: 0.5rem;
+  }
+
+  .gallery-thumbnails img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .product-details {
+    padding-top: 1.5rem;
+  }
+
+  .product-details h1 {
+    font-size: 1.8rem;
+  }
+
+  .product-details h2 {
+    font-size: 1.5rem;
+  }
+
+  .product-price {
+    font-size: 1.6rem;
+  }
+
+  .btn-add-to-cart {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+
+  .related-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .back-to-top {
+    right: 1rem;
+    bottom: 1rem;
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}
+
+/* SMALL TABLETS (640px - 768px) */
+@media (min-width: 640px) and (max-width: 768px) {
+  .product-detail-container {
+    padding: 1.5rem;
+  }
+
+  .product-gallery {
+    width: 100%;
+    height: 300px;
+  }
+
+  .gallery-thumbnails {
+    gap: 0.8rem;
+  }
+
+  .gallery-thumbnails img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .product-details h1 {
+    font-size: 2rem;
+  }
+
+  .related-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .back-to-top {
+    right: 1.5rem;
+    bottom: 1.5rem;
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+/* TABLETS (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .product-detail-container {
+    padding: 2rem;
+  }
+
+  .product-gallery {
+    width: 280px;
+    height: 320px;
+  }
+
+  .gallery-thumbnails {
+    gap: 1rem;
+  }
+
+  .gallery-thumbnails img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .product-details h1 {
+    font-size: 2.2rem;
+  }
+
+  .related-products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .back-to-top {
+    right: 2rem;
+    bottom: 2rem;
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+/* DESKTOPS (1024px - 1440px) */
+@media (min-width: 1024px) and (max-width: 1440px) {
+  .product-detail-container {
+    padding: 2.5rem;
+  }
+
+  .product-gallery {
+    width: 320px;
+    height: 360px;
+  }
+
+  .related-products-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* LARGE DESKTOPS (> 1440px) */
+@media (min-width: 1441px) {
+  .related-products-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

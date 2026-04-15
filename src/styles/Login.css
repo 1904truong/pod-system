@@ -162,3 +162,168 @@
   filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
 }
 .icon-app { color: #000000; }
+
+/* ══════════════════════════════════════════
+   RESPONSIVE DESIGN FOR LOGIN PAGE
+══════════════════════════════════════════ */
+
+/* MOBILE (< 640px) */
+@media (max-width: 639px) {
+  .login-container {
+    width: 100vw;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .login-card-wrapper {
+    width: 95vw;
+    min-height: auto;
+    margin: 1rem auto;
+    flex-direction: column;
+    border-radius: 1.5rem;
+  }
+
+  .login-left {
+    padding: 2rem 1.5rem;
+    border-radius: 1.5rem 1.5rem 0 0;
+    min-height: 15rem;
+  }
+
+  .login-left h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .login-left p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .btn-read-more {
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 8px 20px;
+  }
+
+  .login-right {
+    padding: 2rem 1.5rem;
+    border-radius: 0 0 1.5rem 1.5rem;
+  }
+
+  .login-right h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .input-field input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .login-btn {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .social-btn {
+    padding: 8px;
+    font-size: 1.4rem;
+  }
+}
+
+/* SMALL TABLETS (640px - 768px) */
+@media (min-width: 640px) and (max-width: 768px) {
+  .login-card-wrapper {
+    width: 90vw;
+    min-height: 45rem;
+  }
+
+  .login-left {
+    padding: 3rem 4rem;
+  }
+
+  .login-left h1 {
+    font-size: 3rem;
+  }
+
+  .login-left p {
+    font-size: 1.4rem;
+  }
+
+  .login-right {
+    padding: 3rem 2.5rem;
+  }
+
+  .login-right h2 {
+    font-size: 2rem;
+  }
+
+  .btn-read-more {
+    margin-left: 0;
+    width: fit-content;
+  }
+}
+
+/* TABLETS (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .login-card-wrapper {
+    width: 85vw;
+    min-height: 48rem;
+  }
+
+  .login-left {
+    padding: 4rem 5rem;
+  }
+
+  .login-left h1 {
+    font-size: 3.5rem;
+  }
+
+  .login-right h2 {
+    font-size: 2.2rem;
+  }
+}
+
+/* DESKTOPS (1024px+) */
+@media (min-width: 1024px) {
+  .login-container {
+    display: flex;
+  }
+
+  .login-card-wrapper {
+    width: 90rem;
+  }
+
+  .login-left h1 {
+    font-size: 4rem;
+  }
+}
+
+/* Extra small (< 320px) */
+@media (max-width: 319px) {
+  .login-card-wrapper {
+    width: 98vw;
+    min-height: auto;
+  }
+
+  .login-left h1 {
+    font-size: 1.6rem;
+  }
+
+  .login-left p {
+    font-size: 1rem;
+  }
+
+  .login-right h2 {
+    font-size: 1.4rem;
+  }
+
+  .input-field input {
+    font-size: 13px;
+  }
+}

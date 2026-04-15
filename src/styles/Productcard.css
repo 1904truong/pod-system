@@ -60,7 +60,8 @@
 }
 
 .product-scroll .product-card {
-  flex: 0 0 32rem;
+  width: 282px;
+  flex: 0 0 282px;
   scroll-snap-align: start;
   transition: transform 0.3s ease;
 }
@@ -87,11 +88,12 @@
 /* ── Card wrapper ── */
 .product-card {
   background: #fff;
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: auto;
+  width: 282px;
+  height: 393px;
   border: 1px solid #ebebeb;
   transition: box-shadow 0.25s ease, transform 0.25s ease;
   cursor: pointer;
@@ -106,7 +108,7 @@
 .product-image {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 280px; /* Allocated height for image in the 390px card */
   background-color: #f6f6f6;
   overflow: hidden;
 }
@@ -114,16 +116,29 @@
 .product-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* Changed from cover to contain to match Designer/Mockup visual */
+}
+
+.product-image-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 /* ── Thông tin sản phẩm ── */
 .product-info {
-  padding: 1.4rem 1.6rem 1.8rem;
+  padding: 1.2rem;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.2rem;
   background: #fff;
+  flex: 1;
 }
 
 .p-name {
@@ -154,20 +169,18 @@
 /* ── Grid sản phẩm ── */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, 282px);
+  justify-content: center;
+  justify-items: center;
   gap: 3rem 2.5rem;
   padding: 2rem 0;
-}
-
-@media (max-width: 1024px) {
-  .product-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  width: 100%;
+  margin: 0 auto;
 }
 
 @media (max-width: 650px) {
   .product-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
 }
 
@@ -217,11 +230,13 @@
 .color-dot:hover {
   transform: scale(1.15);
 }
+
 .color-dot.selected {
   outline: 2px solid #111;
   outline-offset: 2.5px;
   transform: scale(1.08);
 }
+
 .color-extra {
   font-size: 1.35rem;
   color: #555;
@@ -235,6 +250,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -243,4 +259,81 @@
 
 .product-card {
   animation: fadeInUp 0.5s ease backwards;
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE DESIGN FOR PRODUCT CARDS
+══════════════════════════════════════════ */
+
+@media (max-width: 639px) {
+  .product-card {
+    border-radius: 0.8rem;
+  }
+
+  .product-image {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+  }
+
+  .product-info {
+    padding: 0.8rem;
+  }
+
+  .product-name {
+    font-size: 1rem;
+  }
+
+  .product-price {
+    font-size: 1.1rem;
+  }
+
+  .product-rating {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1024px) {
+  .product-card {
+    border-radius: 1rem;
+  }
+
+  .product-image {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+  }
+
+  .product-info {
+    padding: 1rem;
+  }
+
+  .product-name {
+    font-size: 1.1rem;
+  }
+
+  .product-price {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-card {
+    border-radius: 1.2rem;
+  }
+
+  .product-image {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+  }
+
+  .product-info {
+    padding: 1.2rem;
+  }
+
+  .product-name {
+    font-size: 1.2rem;
+  }
+
+  .product-price {
+    font-size: 1.3rem;
+  }
 }

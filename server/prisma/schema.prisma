@@ -1,0 +1,343 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// -----------------------------------------------------
+// 1. Quản lý Người dùng & Cửa hàng
+// -----------------------------------------------------
+
+model User {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique
+  password  String
+  name      String?
+  avatar    String?  @default("https://via.placeholder.com/150")
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  stores    Store[]
+  settings  Setting?
+  campaigns Campaign[]
+  artworks  Artwork[]
+  wallet    Wallet?
+  taskLogs  TaskLog[]
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model Store {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  url       String?
+  platform  Platform @default(CUSTOM)
+  logo      String?
+  banner    String?
+  favicon   String?
+  aboutText String?
+
+  storeTimezone   String?  @default("(GMT+00:00) UTC")
+  payoutCurrency  String?  @default("USD")
+
+  desktopColumns     Int      @default(3)
+  mobileColumns      Int      @default(2)
+  filtersEnabled     Boolean  @default(true)
+  searchEnabled      Boolean  @default(true)
+  initialProductCount Int     @default(12)
+
+  cookieBannerEnabled Boolean @default(false)
+  companyInfoEnabled  Boolean @default(false)
+
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  collectionsPublishedAt DateTime?
+  discountsPublishedAt   DateTime?
+
+  campaigns Campaign[]
+  collections Collection[]
+  discounts  Discount[]
+  orders    Order[]
+}
+
+enum Platform {
+  SHOPIFY
+  WOOCOMMERCE
+  CUSTOM
+}
+
+model Setting {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId          String   @unique @db.ObjectId
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  receiveEmails   Boolean  @default(true)
+  payoutMethod    String?  // PayPal, Payoneer, etc.
+  payoutAccountId String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+// -----------------------------------------------------
+// 2. Cấu trúc Catalog & Thiết kế
+// -----------------------------------------------------
+
+model BaseProduct {
+  id          String   @id @map("_id")
+  name        String
+  category    String
+  description String?
+  costPrice   Float    // Giá gốc
+  image       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  campaigns   Campaign[]
+}
+
+model Artwork {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  fileUrl   String
+  mimeType  String?
+  sizeBytes Int?
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  campaignProducts CampaignProduct[]
+}
+
+model Campaign {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  slug          String?
+  description   String?
+  status        CampaignStatus @default(DRAFT)
+  userId        String   @db.ObjectId
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  storeId       String   @db.ObjectId
+  store         Store    @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  baseProductId String?
+  baseProduct   BaseProduct? @relation(fields: [baseProductId], references: [id])
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  products      CampaignProduct[]
+  collections   CollectionCampaign[]
+  discounts     Discount[]
+
+  @@index([storeId])
+}
+
+enum CampaignStatus {
+  DRAFT
+  PUBLISHED
+  PAUSED
+}
+
+model CampaignProduct {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  campaignId  String   @db.ObjectId
+  campaign    Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  artworkId   String?  @db.ObjectId
+  artwork     Artwork? @relation(fields: [artworkId], references: [id])
+  catalogId   String?  // Reference to original ID (can be string or null)
+  name        String?  // Product title
+  category    String?
+  subCategory String?
+  designerDraft Json?
+  color       String?
+  size        String?
+  salePrice   Float    // Giá bán ra
+  img         String?  // Ảnh mockup được sinh ra
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  orderItems  OrderItem[]
+}
+
+// -----------------------------------------------------
+// 3. Đơn hàng & Tài chính
+// -----------------------------------------------------
+
+model Order {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  orderNumber String   @unique // VD: POD-12345
+  storeId     String   @db.ObjectId
+  store       Store    @relation(fields: [storeId], references: [id])
+  status      OrderStatus @default(PENDING)
+  totalAmount Float
+  customerName String?
+  shippingAddress String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  items       OrderItem[]
+}
+
+enum OrderStatus {
+  PENDING
+  PRINTING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+model OrderItem {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  orderId           String   @db.ObjectId
+  order             Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  campaignProductId String   @db.ObjectId
+  campaignProduct   CampaignProduct @relation(fields: [campaignProductId], references: [id])
+  quantity          Int      @default(1)
+  price             Float    // Giá tại thời điểm đặt
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Wallet {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId        String   @unique @db.ObjectId
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  balance       Float    @default(0.0) // Số dư có sẵn
+  pending       Float    @default(0.0) // Chờ duyệt
+  totalPaidOut  Float    @default(0.0) // Đã rút
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  transactions  Transaction[]
+}
+
+model Transaction {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  walletId    String   @db.ObjectId
+  wallet      Wallet   @relation(fields: [walletId], references: [id], onDelete: Cascade)
+  type        TxType
+  amount      Float
+  description String?
+  createdAt   DateTime @default(now())
+}
+
+enum TxType {
+  INCOME
+  PAYOUT
+  FEE
+}
+
+// -----------------------------------------------------
+// 4. Collections & Sub-collections (navigation)
+// -----------------------------------------------------
+
+model Collection {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  storeId   String   @db.ObjectId
+  store     Store    @relation(fields: [storeId], references: [id], onDelete: Cascade)
+
+  parentId  String?  @db.ObjectId
+  parent    Collection?  @relation("CollectionToSubcollections", fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  subcollections Collection[] @relation("CollectionToSubcollections")
+
+  name      String
+  slug      String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  campaigns CollectionCampaign[]
+
+  @@index([storeId])
+  @@index([parentId])
+  @@unique([storeId, parentId, slug])
+}
+
+model CollectionCampaign {
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  collectionId String     @db.ObjectId
+  collection   Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  campaignId   String     @db.ObjectId
+  campaign     Campaign   @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  createdAt    DateTime   @default(now())
+
+  @@unique([collectionId, campaignId])
+}
+
+// -----------------------------------------------------
+// 5. Discounts
+// -----------------------------------------------------
+
+model Discount {
+  id           String          @id @default(auto()) @map("_id") @db.ObjectId
+  storeId      String          @db.ObjectId
+  store        Store           @relation(fields: [storeId], references: [id], onDelete: Cascade)
+
+  scope        DiscountScope
+  type         DiscountType
+  audience     DiscountAudience
+  status       DiscountStatus  @default(DRAFT)
+
+  // For campaign-specific discounts
+  campaignId   String?         @db.ObjectId
+  campaign     Campaign?       @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+
+  name         String?
+  percentOff   Float?
+  fixedAmount  Float?
+  promoCode    String?
+  promoCodeNormalized String?
+  minCartValue Float?
+  regions      Json?
+  shippingCountries Json?
+  isActive     Boolean         @default(false)
+
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+
+  @@index([storeId])
+  @@index([campaignId])
+  @@unique([storeId, promoCode])
+  @@unique([storeId, promoCodeNormalized])
+}
+
+enum DiscountScope {
+  STOREWIDE
+  CAMPAIGN
+}
+
+enum DiscountType {
+  FREE_SHIPPING
+  PERCENT_OFF
+  FIXED_AMOUNT
+}
+
+enum DiscountAudience {
+  EVERYONE
+  TARGETED
+}
+
+enum DiscountStatus {
+  DRAFT
+  READY
+}
+
+model TaskLog {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String   // Action name
+  status      String   @default("Success")
+  detail      String?
+  userId      String   @db.ObjectId
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+
+  @@index([userId])
+}

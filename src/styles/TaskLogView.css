@@ -1,0 +1,135 @@
+.task-log-container {
+  padding: 2.4rem 4rem;
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
+.task-log-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.4rem;
+  color: #3b82f6;
+  margin-bottom: 2.4rem;
+}
+
+.task-log-breadcrumb span {
+  color: #64748b;
+}
+
+.task-log-header {
+  margin-bottom: 3.2rem;
+}
+
+.task-log-header h1 {
+  font-size: 3.6rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* Task List */
+.task-item-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.8rem;
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+}
+
+.task-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.6rem 2.4rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.task-item-header:hover {
+  background: #f8fafc;
+}
+
+.task-item-title-row {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.task-chevron {
+  font-size: 1.2rem;
+  color: #94a3b8;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.task-chevron.expanded {
+  transform: rotate(180deg);
+}
+
+.task-name {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.task-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.4rem;
+  color: #64748b;
+}
+
+.task-status-badge i {
+  color: #22c55e;
+  font-size: 1.5rem;
+}
+
+/* Detailed Section */
+.task-item-details {
+  padding: 0 2.4rem 2.4rem 5.2rem;
+  border-top: 1px solid #f1f5f9;
+  background: #ffffff;
+  animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.task-metadata-grid {
+  display: grid;
+  grid-template-columns: 14rem 1fr;
+  gap: 1.6rem 2.4rem;
+  margin-top: 2rem;
+  margin-bottom: 2.4rem;
+}
+
+.task-meta-label {
+  font-size: 1.45rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.task-meta-value {
+  font-size: 1.45rem;
+  color: #475569;
+  font-weight: 500;
+}
+
+.show-details-link {
+  font-size: 1.4rem;
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}

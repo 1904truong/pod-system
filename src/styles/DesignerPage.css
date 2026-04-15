@@ -3,7 +3,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  padding-top: 100px;
+  padding-top: 0; /* Header removed */
   overflow: hidden;
 }
 
@@ -196,7 +196,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 15px; /* Điều chỉnh lại 15px để nút không bị sát trần hoặc bị che */
   border-right: 1px solid #e0e0e0;
   position: relative;
 }
@@ -209,6 +209,7 @@
   border-radius: 6px;
   z-index: 10;
   margin-bottom: 20px;
+  margin-top: 0px; /* Bỏ margin-top để nút cao hơn */
 
   width: fit-content;
   margin-left: 1px;
@@ -224,6 +225,7 @@
   cursor: pointer;
   border-radius: 4px;
   transition: all 0.2s;
+  min-width: 100px; /* Thêm min-width để 2 nút bằng nhau */
 }
 
 .side-switches button.active {
@@ -233,25 +235,358 @@
 .main-canvas {
   position: relative;
   width: 100%;
-  height: 80%;
+  height: clamp(400px, 60vh, 600px); /* Đặt chiều cao ổn định và linh hoạt theo màn hình */
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 .shirt-img {
-  max-width: 90%;
-  max-height: 90%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
 /* Khung in đứt đoạn */
 .print-safe-area {
   position: absolute;
-  top: 25%;
-  width: 175px;
-  height: 200px;
-  border: 1.5px dashed #555;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(140px, 34%, 230px);
+  height: clamp(160px, 40%, 280px);
+  border: 2px dashed rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.02);
   pointer-events: none;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tank top mockups have less body area; shrink safe area */
+.print-safe-area.safe-area-tanktop {
+  width: clamp(120px, 28%, 200px);
+  height: clamp(140px, 34%, 240px);
+  top: 50%;
+}
+
+/* Drinkware: use a more "wrap"-like safe area */
+.print-safe-area.safe-area-mug {
+  width: clamp(200px, 54%, 380px);
+  height: clamp(120px, 28%, 210px);
+  top: 54%;
+}
+
+.print-safe-area.safe-area-bottles {
+  width: clamp(150px, 34%, 260px);
+  height: clamp(240px, 60%, 420px);
+  top: 50%;
+}
+
+.print-safe-area.safe-area-tumbler {
+  width: clamp(170px, 38%, 300px);
+  height: clamp(240px, 58%, 420px);
+  top: 50%;
+}
+
+.print-safe-area.safe-area-glass {
+  width: clamp(170px, 40%, 300px);
+  height: clamp(220px, 54%, 400px);
+  top: 52%;
+}
+
+/* Homeware sizing */
+.print-safe-area.safe-area-homeware-cushion {
+  width: clamp(220px, 52%, 420px);
+  height: clamp(220px, 52%, 420px);
+  top: 50%;
+}
+
+.print-safe-area.safe-area-homeware-mats {
+  width: clamp(260px, 72%, 520px);
+  height: clamp(170px, 46%, 320px);
+  top: 52%;
+}
+
+.print-safe-area.safe-area-homeware-blankets {
+  width: clamp(220px, 52%, 420px);
+  height: clamp(300px, 78%, 560px);
+  top: 50%;
+}
+
+.print-safe-area.safe-area-homeware-ornament {
+  width: clamp(220px, 52%, 420px);
+  height: clamp(220px, 52%, 420px);
+  top: 52%;
+}
+
+.print-safe-area.safe-area-homeware-yardsign {
+  width: clamp(280px, 78%, 560px);
+  height: clamp(180px, 46%, 340px);
+  top: 38%;
+}
+
+.print-safe-area.safe-area-homeware-candle {
+  width: clamp(220px, 58%, 440px);
+  height: clamp(180px, 46%, 340px);
+  top: 54%;
+}
+
+/* Wall art sizing */
+.print-safe-area.safe-area-wallart-poster {
+  width: clamp(240px, 60%, 460px);
+  height: clamp(320px, 82%, 580px);
+  top: 50%;
+}
+
+.print-safe-area.safe-area-wallart-canvas {
+  width: clamp(230px, 58%, 440px);
+  height: clamp(300px, 78%, 560px);
+  top: 50%;
+}
+
+/* Hats sizing */
+.print-safe-area.safe-area-hat-cap {
+  width: clamp(180px, 44%, 340px);
+  height: clamp(90px, 22%, 170px);
+  top: 30%;
+}
+
+.print-safe-area.safe-area-hat-beanie {
+  width: clamp(110px, 22%, 180px);
+  height: clamp(110px, 22%, 180px);
+  top: 34%;
+}
+
+.print-safe-area.safe-area-hat-visor {
+  width: clamp(110px, 22%, 180px);
+  height: clamp(110px, 22%, 180px);
+  top: 30%;
+}
+
+/* Accessories sizing */
+.print-safe-area.safe-area-accessories-tote {
+  width: clamp(220px, 56%, 420px);
+  height: clamp(220px, 56%, 420px);
+  top: 60%;
+}
+
+.print-safe-area.safe-area-accessories-apron {
+  width: clamp(200px, 48%, 380px);
+  height: clamp(300px, 80%, 580px);
+  top: 56%;
+}
+
+.print-safe-area.safe-area-accessories-pouch-small {
+  width: clamp(280px, 78%, 560px);
+  height: clamp(200px, 52%, 380px);
+  top: 52%;
+}
+
+.print-safe-area.safe-area-accessories-pouch-large {
+  width: clamp(290px, 80%, 580px);
+  height: clamp(210px, 54%, 400px);
+  top: 52%;
+}
+
+.print-safe-area.interactive {
+  pointer-events: auto;
+  border-color: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.print-design-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+  z-index: 1;
+}
+
+.print-design-viewport:active {
+  cursor: grabbing;
+}
+
+.print-design-image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+/* Custom image layer preview (frame inside print-safe-area) */
+.custom-image-layer-stack {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.custom-text-layer-stack {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.static-text-layer-stack {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.custom-text-layer {
+  position: absolute;
+  border: 1px dashed rgba(0, 0, 0, 0.25);
+  color: #111;
+  display: flex;
+  padding: 4px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.custom-text-layer.alignX-left {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.custom-text-layer.alignX-center {
+  justify-content: center;
+  text-align: center;
+}
+
+.custom-text-layer.alignX-right {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.custom-text-layer.alignY-top {
+  align-items: flex-start;
+}
+
+.custom-text-layer.alignY-middle {
+  align-items: center;
+}
+
+.custom-text-layer.alignY-bottom {
+  align-items: flex-end;
+}
+
+.custom-text-content {
+  line-height: 1.1;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.custom-image-frame {
+  position: absolute;
+  border: 2px solid #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.custom-image-frame.shape-square {
+  border-radius: 6px;
+}
+
+.custom-image-frame.shape-circle {
+  border-radius: 999px;
+}
+
+.custom-image-frame.shape-star {
+  clip-path: polygon(
+    50% 2%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 92%,
+    50% 72%,
+    21% 92%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+.custom-image-frame.shape-certificate {
+  /* simple certificate-like octagon */
+  clip-path: polygon(
+    15% 0%,
+    85% 0%,
+    100% 15%,
+    100% 85%,
+    85% 100%,
+    15% 100%,
+    0% 85%,
+    0% 15%
+  );
+}
+
+.custom-image-frame.shape-heart {
+  clip-path: polygon(
+    50% 90%,
+    10% 55%,
+    2% 35%,
+    10% 18%,
+    25% 12%,
+    40% 18%,
+    50% 30%,
+    60% 18%,
+    75% 12%,
+    90% 18%,
+    98% 35%,
+    90% 55%
+  );
+}
+
+.custom-image-placeholder-icon {
+  font-size: 2.2rem;
+  opacity: 0.85;
+}
+
+.custom-image-placeholder-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0 6px;
+}
+
+.custom-image-placeholder-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Small button style for placeholder upload in the layer panel */
+.btn-upload-placeholder {
+  padding: 6px 12px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.btn-upload-placeholder:hover {
+  border-color: #aac0f0;
+}
+
+.placeholder-file-hint {
+  font-size: 1.2rem;
+  color: #666;
 }
 
 /* cột phải */
@@ -320,7 +655,7 @@
   flex: 1;
   overflow-y: auto;
   padding-bottom: 80px;
-  margin-top: -10px;
+  margin-top: 0px; /* Reset margin-top để ổn định */
 }
 
 /* Đường kẻ ngang mảnh ngay trên nút */
@@ -363,6 +698,85 @@
   align-items: center;
   gap: 8px;
   cursor: pointer;
+}
+
+/* About your products (blank design warning) */
+.about-products-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.about-products-modal {
+  width: 400px;
+  max-width: calc(100vw - 32px);
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.about-products-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.about-products-header h3 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.about-products-close {
+  background: none;
+  border: none;
+  font-size: 2.8rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #333;
+}
+
+.about-products-body {
+  padding: 12px 14px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.about-products-body p {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #666;
+}
+
+.about-products-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 14px;
+}
+
+.about-products-keep-editing {
+  background: none;
+  border: none;
+  color: #0045c7;
+  font-weight: 700;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px 8px;
+}
+
+.about-products-continue.btn-primary-continue {
+  width: auto;
+  padding: 10px 12px;
+  font-size: 1.5rem;
 }
 /* 8. add a new imgae */
 .image-modal-overlay {
@@ -738,6 +1152,76 @@
 
 /* --- CHI TIẾT KHI MỞ RỘNG (ẢNH 2) --- */
 
+/* Artwork Library Content */
+.library-content {
+  height: 250px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 15px;
+  padding: 5px;
+}
+
+.library-item {
+  position: relative;
+  aspect-ratio: 1;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #fdfdfd;
+}
+
+.library-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: #0045c7;
+}
+
+.library-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8px;
+  background: repeating-conic-gradient(#f0f0f0 0% 25%, #fff 0% 50%) 50% / 10px 10px;
+}
+
+.library-item .item-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 69, 199, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.library-item:hover .item-overlay {
+  opacity: 1;
+}
+
+.library-item .item-overlay span {
+  color: #0045c7;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.library-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #888;
+  font-size: 1.4rem;
+  font-style: italic;
+}
+
 .layer-card-body {
   padding: 15px;
   border-top: 1px solid #eee;
@@ -766,6 +1250,52 @@
   border: 1px solid #ddd;
   border-radius: 4px;
   outline: none;
+}
+
+.input-with-toggle input:disabled {
+  background: #f3f4f6;
+  color: #818387;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 52px;
+  height: 30px;
+  flex: 0 0 auto;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: #c7c9cc;
+  border-radius: 999px;
+  transition: background 0.15s ease;
+}
+
+.toggle-slider::before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  left: 4px;
+  top: 4px;
+  background: #fff;
+  border-radius: 999px;
+  transition: transform 0.15s ease;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background: #0045c7;
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(22px);
 }
 
 .shape-grid {
@@ -853,17 +1383,28 @@
 }
 .align-buttons button {
   height: 38px;
-  border: 1px solid #e0e0e0;
-  background: #f9f9f9;
-  border-radius: 4px;
+  border: 1px solid transparent;
+  background: #f3f4f6;
+  border-radius: 8px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #111;
 }
 .align-buttons button:hover {
-  background: #eee;
-  border-color: #ccc;
+  background: #e9eaec;
+}
+
+.align-buttons button.active {
+  background: #111;
+  color: #fff;
+}
+
+.mz-align-svg {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 
 /* Link chữ xanh */
@@ -1175,12 +1716,14 @@
 }
 /* mới preview */
 .preview-container {
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  justify-content: flex-start;
+  gap: 16px;
+  padding: 24px;
 }
 
 .blank-notice {
@@ -1193,8 +1736,9 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
-  margin-top: -29px;
+  margin: 0;
+  width: 100%;
+  max-width: 760px;
 }
 
 .main-preview-mockup {
@@ -1205,51 +1749,337 @@
   width: 100%;
 }
 
+.preview-mockup-stage {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .main-preview-mockup img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-}
-.mockup-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  padding-top: 10px;
+  display: block;
 }
 
-.mockup-thumb {
+/* Preview should not be draggable */
+.print-design-viewport.preview {
+  cursor: default;
+}
+
+/* Center the safe area on preview mockups */
+.print-safe-area.preview {
+  width: 34%;
+  height: 40%;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+}
+
+/* Drinkware preview sizing */
+.print-safe-area.preview.safe-area-mug {
+  width: 56%;
+  height: 26%;
+  top: 56%;
+}
+
+.print-safe-area.preview.safe-area-bottles {
+  width: 34%;
+  height: 62%;
+  top: 52%;
+}
+
+.print-safe-area.preview.safe-area-tumbler {
+  width: 38%;
+  height: 58%;
+  top: 52%;
+}
+
+.print-safe-area.preview.safe-area-glass {
+  width: 40%;
+  height: 54%;
+  top: 54%;
+}
+
+/* Homeware preview sizing */
+.print-safe-area.preview.safe-area-homeware-cushion {
+  width: 56%;
+  height: 56%;
+  top: 50%;
+}
+
+.print-safe-area.preview.safe-area-homeware-mats {
+  width: 74%;
+  height: 44%;
+  top: 54%;
+}
+
+.print-safe-area.preview.safe-area-homeware-blankets {
+  width: 56%;
+  height: 80%;
+  top: 50%;
+}
+
+.print-safe-area.preview.safe-area-homeware-ornament {
+  width: 56%;
+  height: 56%;
+  top: 50%;
+}
+
+.print-safe-area.preview.safe-area-homeware-yardsign {
+  width: 80%;
+  height: 44%;
+  top: 40%;
+}
+
+.print-safe-area.preview.safe-area-homeware-candle {
+  width: 60%;
+  height: 46%;
+  top: 56%;
+}
+
+/* Wall art preview sizing */
+.print-safe-area.preview.safe-area-wallart-poster {
+  width: 64%;
+  height: 84%;
+  top: 50%;
+}
+
+.print-safe-area.preview.safe-area-wallart-canvas {
+  width: 62%;
+  height: 80%;
+  top: 50%;
+}
+
+/* Hats preview sizing */
+.print-safe-area.preview.safe-area-hat-cap {
+  width: 46%;
+  height: 20%;
+  top: 30%;
+}
+
+.print-safe-area.preview.safe-area-hat-beanie {
+  width: 22%;
+  height: 22%;
+  top: 34%;
+}
+
+.print-safe-area.preview.safe-area-hat-visor {
+  width: 22%;
+  height: 22%;
+  top: 30%;
+}
+
+/* Accessories preview sizing */
+.print-safe-area.preview.safe-area-accessories-tote {
+  width: 58%;
+  height: 58%;
+  top: 60%;
+}
+
+.print-safe-area.preview.safe-area-accessories-apron {
+  width: 50%;
+  height: 84%;
+  top: 56%;
+}
+
+.print-safe-area.preview.safe-area-accessories-pouch-small {
+  width: 84%;
+  height: 54%;
+  top: 52%;
+}
+
+.print-safe-area.preview.safe-area-accessories-pouch-large {
+  width: 86%;
+  height: 56%;
+  top: 52%;
+}
+
+/* Product views (right panel) */
+.product-views-wrapper {
+  padding-top: 6px;
+}
+
+.right-panel-v2 .mockup-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  padding-top: 6px;
+}
+
+.right-panel-v2 .mockup-thumb {
   display: flex;
   flex-direction: column;
   cursor: pointer;
   transition: all 0.2s;
+  gap: 6px;
 }
 
-.mockup-thumb img {
-  width: 90%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
+.right-panel-v2 .mockup-thumb-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
   background: #fff;
-}
-
-.mockup-thumb.active img {
-  border: 2px solid #111;
-}
-.mockup-thumb span {
-  font-size: 1.1rem;
-  color: #666;
-  margin-top: 6px;
-  line-height: 1.2;
-  text-align: left;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+  box-sizing: border-box;
   overflow: hidden;
 }
 
-.mockup-thumb:hover img {
-  border-color: #0045c7;
+.right-panel-v2 .mockup-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.right-panel-v2 .mockup-thumb.active .mockup-thumb-stage {
+  border: 2px solid #111;
+}
+
+.right-panel-v2 .mockup-thumb:hover .mockup-thumb-stage {
+  border-color: #111;
+}
+
+.right-panel-v2 .mockup-thumb span {
+  font-size: 1.2rem;
+  color: #777;
+  line-height: 1.2;
+  text-align: left;
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* Smaller overlay for thumbnails */
+.print-safe-area.preview.thumb {
+  width: 38%;
+  height: 44%;
+  top: 44%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+}
+
+/* Drinkware thumb overlay sizing */
+.print-safe-area.preview.thumb.safe-area-mug {
+  width: 60%;
+  height: 28%;
+  top: 56%;
+}
+
+.print-safe-area.preview.thumb.safe-area-bottles {
+  width: 36%;
+  height: 64%;
+  top: 52%;
+}
+
+.print-safe-area.preview.thumb.safe-area-tumbler {
+  width: 40%;
+  height: 60%;
+  top: 52%;
+}
+
+.print-safe-area.preview.thumb.safe-area-glass {
+  width: 42%;
+  height: 56%;
+  top: 54%;
+}
+
+/* Homeware thumb overlay sizing */
+.print-safe-area.preview.thumb.safe-area-homeware-cushion {
+  width: 60%;
+  height: 60%;
+  top: 50%;
+}
+
+.print-safe-area.preview.thumb.safe-area-homeware-mats {
+  width: 78%;
+  height: 46%;
+  top: 54%;
+}
+
+.print-safe-area.preview.thumb.safe-area-homeware-blankets {
+  width: 60%;
+  height: 82%;
+  top: 50%;
+}
+
+.print-safe-area.preview.thumb.safe-area-homeware-ornament {
+  width: 60%;
+  height: 60%;
+  top: 50%;
+}
+
+.print-safe-area.preview.thumb.safe-area-homeware-yardsign {
+  width: 84%;
+  height: 46%;
+  top: 40%;
+}
+
+.print-safe-area.preview.thumb.safe-area-homeware-candle {
+  width: 64%;
+  height: 48%;
+  top: 56%;
+}
+
+/* Wall art thumb overlay sizing */
+.print-safe-area.preview.thumb.safe-area-wallart-poster {
+  width: 68%;
+  height: 86%;
+  top: 50%;
+}
+
+.print-safe-area.preview.thumb.safe-area-wallart-canvas {
+  width: 66%;
+  height: 82%;
+  top: 50%;
+}
+
+/* Hats thumb overlay sizing */
+.print-safe-area.preview.thumb.safe-area-hat-cap {
+  width: 50%;
+  height: 22%;
+  top: 30%;
+}
+
+.print-safe-area.preview.thumb.safe-area-hat-beanie {
+  width: 24%;
+  height: 24%;
+  top: 34%;
+}
+
+.print-safe-area.preview.thumb.safe-area-hat-visor {
+  width: 24%;
+  height: 24%;
+  top: 30%;
+}
+
+/* Accessories thumb overlay sizing */
+.print-safe-area.preview.thumb.safe-area-accessories-tote {
+  width: 62%;
+  height: 62%;
+  top: 60%;
+}
+
+.print-safe-area.preview.thumb.safe-area-accessories-apron {
+  width: 54%;
+  height: 86%;
+  top: 56%;
+}
+
+.print-safe-area.preview.thumb.safe-area-accessories-pouch-small {
+  width: 88%;
+  height: 56%;
+  top: 52%;
+}
+
+.print-safe-area.preview.thumb.safe-area-accessories-pouch-large {
+  width: 90%;
+  height: 58%;
+  top: 52%;
 }
 /* chọn màu */
 /* color-section bọc ngoài: position relative để popover anchor đúng chỗ */
@@ -1388,4 +2218,180 @@
 .color-circle.active {
   border: 2.5px solid #0045c7;
   box-shadow: 0 0 0 1px rgba(0, 69, 199, 0.25);
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE DESIGN FOR DESIGNER PAGE
+══════════════════════════════════════════ */
+
+/* MOBILE (< 640px) */
+@media (max-width: 639px) {
+  .designer-container {
+    padding: 1rem;
+    flex-direction: column;
+  }
+
+  .canvas-area {
+    width: 100%;
+    height: auto;
+    min-height: 250px;
+  }
+
+  .editor-canvas {
+    height: 250px;
+  }
+
+  .controls-panel {
+    width: 100%;
+    height: auto;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+    padding: 0.8rem 0;
+  }
+
+  .control-group {
+    margin-bottom: 1rem;
+    gap: 0.5rem;
+  }
+
+  .btn-upload,
+  .btn-save,
+  .btn-download {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
+  .color-circle {
+    width: 28px;
+    height: 28px;
+  }
+
+  .size-selector-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+}
+
+/* SMALL TABLETS (640px - 768px) */
+@media (min-width: 640px) and (max-width: 768px) {
+  .designer-container {
+    flex-direction: column;
+    padding: 1.2rem;
+  }
+
+  .canvas-area {
+    width: 100%;
+    height: 300px;
+  }
+
+  .controls-panel {
+    width: 100%;
+    height: auto;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .btn-upload,
+  .btn-save,
+  .btn-download {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+
+  .size-selector-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* TABLETS (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .designer-container {
+    padding: 1.5rem;
+    gap: 2rem;
+  }
+
+  .canvas-area {
+    width: 65%;
+    height: 400px;
+  }
+
+  .controls-panel {
+    width: 35%;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .size-selector-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* DESKTOPS (1024px - 1440px) */
+@media (min-width: 1024px) and (max-width: 1440px) {
+  .designer-container {
+    padding: 2rem;
+    gap: 2.5rem;
+  }
+
+  .canvas-area {
+    width: 60%;
+  }
+
+  .controls-panel {
+    width: 40%;
+  }
+
+  .section-title {
+    font-size: 1.7rem;
+  }
+}
+
+/* LARGE DESKTOPS (> 1440px) */
+@media (min-width: 1441px) {
+  .designer-container {
+    padding: 2.5rem;
+  }
+
+  .canvas-area {
+    width: 65%;
+  }
+
+  .controls-panel {
+    width: 35%;
+  }
+}
+
+/* Extra small (< 320px) */
+@media (max-width: 319px) {
+  .designer-container {
+    padding: 0.8rem;
+  }
+
+  .canvas-area {
+    min-height: 200px;
+  }
+
+  .editor-canvas {
+    height: 200px;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+  }
+
+  .color-circle {
+    width: 24px;
+    height: 24px;
+  }
+
+  .size-selector-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

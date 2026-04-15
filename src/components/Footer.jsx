@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../styles/Footer.css";
 
 const Footer = () => {
@@ -10,7 +11,7 @@ const Footer = () => {
           <div className="footer-col">
             <h4>Store Info</h4>
             <ul>
-              <li>About us</li>
+              <li><Link to="/about" style={{color: 'inherit', textDecoration: 'none'}}>About us</Link></li>
               <li>Privacy Policy</li>
               <li>Terms &amp; conditions</li>
               <li>Copyright &amp; trademark policy</li>
@@ -22,7 +23,7 @@ const Footer = () => {
             <h4>Help &amp; Support</h4>
             <ul>
               <li>Contact us</li>
-              <li>FAQs</li>
+              <li><Link to="/help" style={{color: 'inherit', textDecoration: 'none'}}>FAQs</Link></li>
             </ul>
           </div>
 

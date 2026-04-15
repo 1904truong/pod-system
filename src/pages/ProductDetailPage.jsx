@@ -16,7 +16,13 @@ import paypal from "../assets/pay/paypal.png";
 import kla from "../assets/pay/kla.png";
 
 import size from "../assets/size_cm.webp";
+import CartModal from "../components/CartModal";
+import { useParams } from "react-router-dom";
+import { getProductById } from "../data/mockProducts";
+
 const ProductDetailPage = () => {
+  const { id } = useParams();
+  
   // --- 1. QUẢN LÝ TRẠNG THÁI ---
   const [selectedColor, setSelectedColor] = useState({
     name: "White",
@@ -30,13 +36,21 @@ const ProductDetailPage = () => {
 
   // State quản lý việc đóng mở Accordion
   const [activeAccordion, setActiveAccordion] = useState(null);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [selectedType, setSelectedType] = useState("Classic Unisex T-shirt");
 
-  // --- 2. DỮ LIỆU MẪU ---
-  const product = {
+  // --- 2. DỮ LIỆU ĐỘNG TỪ URL ---
+  const dynamicProduct = getProductById(id);
+
+  // Dữ liệu mẫu fallback nếu không tìm thấy ID
+  const defaultProduct = {
     title: "Jag Är Pensionär Min Husbil",
     price: "€21.99",
     type: "Classic Unisex T-shirt",
+    image: tshirt
   };
+
+  const product = dynamicProduct || defaultProduct;
 
   const productTypes = [
     "White Mug",
@@ -48,7 +62,14 @@ const ProductDetailPage = () => {
     "Classic Sweatshirt",
   ];
 
-  const images = [tshirt, tshirt21, tshirt3, tshirt4, tshirt5];
+  // Gallery images - Use product image as primary, then placeholders
+  const images = [
+    product.image || tshirt,
+    tshirt21,
+    tshirt3,
+    tshirt4,
+    tshirt5
+  ];
 
   const colors = [
     { name: "White", hex: "#ffffff" },
@@ -137,7 +158,7 @@ const ProductDetailPage = () => {
           <div className="d-breadcrumbs">
             <i className="fa-solid fa-house"></i>{" "}
             <i className="fa-solid fa-chevron-right"></i> Clothing{" "}
-            <i className="fa-solid fa-chevron-right"></i> {product.title}
+            <i className="fa-solid fa-chevron-right"></i> {product.name}
           </div>
           <div className="currency-selector-wrapper">
             <span className="currency-label">Currency</span>
@@ -219,13 +240,17 @@ const ProductDetailPage = () => {
 
           <div className="info-sidebar">
             <div className="title-row">
-              <h1 className="product-name">{product.title}</h1>
+              <h1 className="product-name">{product.name}</h1>
             </div>
             <div className="product-price">{product.price}</div>
 
             <div className="form-group">
               <label>Product</label>
-              <select className="full-select">
+              <select 
+                className="full-select" 
+                value={selectedType}
+                onChange={(e) => setSelectedType(e.target.value)}
+              >
                 {productTypes.map((item, index) => (
                   <option key={index} value={item}>
                     {item}
@@ -297,7 +322,12 @@ const ProductDetailPage = () => {
               </select>
             </div>
 
-            <button className="btn-buy-now-green">Buy now</button>
+            <button 
+              className="btn-buy-now-green"
+              onClick={() => setIsCartOpen(true)}
+            >
+              Buy now
+            </button>
 
             <div className="pay-methods">
               <img src={visa} alt="visa" />
@@ -513,6 +543,20 @@ const ProductDetailPage = () => {
         <i className="fa-solid fa-caret-up"></i>
       </div>
       <Footer />
+
+      <CartModal 
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        product={{
+          name: product.name,
+          image: images[0],
+          price: product.price
+        }}
+        selectedSize={selectedSize}
+        selectedColor={selectedColor}
+        quantity={quantity}
+        selectedType={selectedType}
+      />
     </div>
   );
 };

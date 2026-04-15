@@ -1,0 +1,460 @@
+.mockup-design-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.mockup-design-base {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.print-safe-area.preview {
+  position: absolute;
+  width: 34%;
+  height: 40%;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.print-safe-area.preview.thumb {
+  width: 38%;
+  height: 44%;
+  top: 44%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* T-shirt specific - Synchronized with DesignerPage.css */
+.print-safe-area.preview.safe-area-tshirt {
+  width: 34%;
+  height: 40%;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.print-safe-area.preview.thumb.safe-area-tshirt {
+  width: 38%;
+  height: 44%;
+  top: 44%;
+}
+
+/* Preview should not be draggable */
+.print-design-viewport.preview {
+  cursor: default;
+}
+
+.print-design-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: transparent !important;
+  border: none !important;
+}
+
+.print-design-image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+/* Drinkware preview sizing */
+.print-safe-area.preview.safe-area-mug {
+  width: 56%;
+  height: 26%;
+  top: 56%;
+}
+
+.print-safe-area.preview.thumb.safe-area-mug {
+  width: 60%;
+  height: 28%;
+  top: 56%;
+}
+
+.print-safe-area.preview.safe-area-bottles {
+  width: 34%;
+  height: 62%;
+  top: 52%;
+}
+
+.print-safe-area.preview.thumb.safe-area-bottles {
+  width: 36%;
+  height: 64%;
+  top: 52%;
+}
+
+.print-safe-area.preview.safe-area-tumbler {
+  width: 38%;
+  height: 58%;
+  top: 52%;
+}
+
+.print-safe-area.preview.thumb.safe-area-tumbler {
+  width: 40%;
+  height: 60%;
+  top: 52%;
+}
+
+.print-safe-area.preview.safe-area-glass {
+  width: 40%;
+  height: 54%;
+  top: 54%;
+}
+
+.print-safe-area.preview.thumb.safe-area-glass {
+  width: 42%;
+  height: 56%;
+  top: 54%;
+}
+
+/* Homeware preview sizing */
+.print-safe-area.preview.safe-area-homeware-cushion {
+  width: 56%;
+  height: 56%;
+  top: 50%;
+}
+
+.print-safe-area.preview.thumb.safe-area-homeware-cushion {
+  width: 60%;
+  height: 60%;
+  top: 50%;
+}
+
+.print-safe-area.preview.safe-area-homeware-mats {
+  width: 74%;
+  height: 44%;
+  top: 54%;
+}
+
+.print-safe-area.preview.thumb.safe-area-homeware-mats {
+  width: 78%;
+  height: 48%;
+  top: 54%;
+}
+
+.print-safe-area.preview.safe-area-homeware-blankets {
+  width: 56%;
+  height: 80%;
+  top: 50%;
+}
+
+.print-safe-area.preview.thumb.safe-area-homeware-blankets {
+  width: 60%;
+  height: 84%;
+  top: 50%;
+}
+
+.print-safe-area.preview.safe-area-homeware-ornament {
+  width: 56%;
+  height: 56%;
+  top: 50%;
+}
+
+.print-safe-area.preview.thumb.safe-area-homeware-ornament {
+  width: 60%;
+  height: 60%;
+  top: 50%;
+}
+
+.print-safe-area.preview.safe-area-homeware-yardsign {
+  width: 80%;
+  height: 44%;
+  top: 40%;
+}
+
+.print-safe-area.preview.thumb.safe-area-homeware-yardsign {
+  width: 84%;
+  height: 48%;
+  top: 40%;
+}
+
+.print-safe-area.preview.safe-area-homeware-candle {
+  width: 60%;
+  height: 46%;
+  top: 56%;
+}
+
+.print-safe-area.preview.thumb.safe-area-homeware-candle {
+  width: 64%;
+  height: 50%;
+  top: 56%;
+}
+
+/* Wall art preview sizing */
+.print-safe-area.preview.safe-area-wallart-poster {
+  width: 64%;
+  height: 84%;
+  top: 50%;
+}
+
+.print-safe-area.preview.thumb.safe-area-wallart-poster {
+  width: 68%;
+  height: 88%;
+  top: 50%;
+}
+
+.print-safe-area.preview.safe-area-wallart-canvas {
+  width: 62%;
+  height: 80%;
+  top: 50%;
+}
+
+.print-safe-area.preview.thumb.safe-area-wallart-canvas {
+  width: 66%;
+  height: 84%;
+  top: 50%;
+}
+
+/* Hats preview sizing */
+.print-safe-area.preview.safe-area-hat-cap {
+  width: 46%;
+  height: 20%;
+  top: 30%;
+}
+
+.print-safe-area.preview.thumb.safe-area-hat-cap {
+  width: 50%;
+  height: 22%;
+  top: 30%;
+}
+
+.print-safe-area.preview.safe-area-hat-beanie {
+  width: 22%;
+  height: 22%;
+  top: 34%;
+}
+
+.print-safe-area.preview.thumb.safe-area-hat-beanie {
+  width: 24%;
+  height: 24%;
+  top: 34%;
+}
+
+.print-safe-area.preview.safe-area-hat-visor {
+  width: 22%;
+  height: 22%;
+  top: 30%;
+}
+
+.print-safe-area.preview.thumb.safe-area-hat-visor {
+  width: 24%;
+  height: 24%;
+  top: 30%;
+}
+
+/* Accessories preview sizing */
+.print-safe-area.preview.safe-area-accessories-tote {
+  width: 58%;
+  height: 58%;
+  top: 60%;
+}
+
+.print-safe-area.preview.thumb.safe-area-accessories-tote {
+  width: 62%;
+  height: 62%;
+  top: 60%;
+}
+
+.print-safe-area.preview.safe-area-accessories-apron {
+  width: 50%;
+  height: 84%;
+  top: 56%;
+}
+
+.print-safe-area.preview.thumb.safe-area-accessories-apron {
+  width: 54%;
+  height: 88%;
+  top: 56%;
+}
+
+.print-safe-area.preview.safe-area-accessories-pouch-small {
+  width: 84%;
+  height: 54%;
+  top: 52%;
+}
+
+.print-safe-area.preview.thumb.safe-area-accessories-pouch-small {
+  width: 88%;
+  height: 58%;
+  top: 52%;
+}
+
+.print-safe-area.preview.safe-area-accessories-pouch-large {
+  width: 86%;
+  height: 56%;
+  top: 52%;
+}
+
+.print-safe-area.preview.thumb.safe-area-accessories-pouch-large {
+  width: 90%;
+  height: 60%;
+  top: 52%;
+}
+
+/* Layers styles migrated from DesignerPage.css */
+.custom-image-layer-stack {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.custom-text-layer-stack {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.static-text-layer-stack {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.custom-text-layer {
+  position: absolute;
+  border: 1px dashed rgba(0, 0, 0, 0.25);
+  color: #111;
+  display: flex;
+  padding: 4px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.custom-text-layer.alignX-left {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.custom-text-layer.alignX-center {
+  justify-content: center;
+  text-align: center;
+}
+
+.custom-text-layer.alignX-right {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.custom-text-layer.alignY-top {
+  align-items: flex-start;
+}
+
+.custom-text-layer.alignY-middle {
+  align-items: center;
+}
+
+.custom-text-layer.alignY-bottom {
+  align-items: flex-end;
+}
+
+.custom-text-content {
+  line-height: 1.1;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.custom-image-frame {
+  position: absolute;
+  border: 2px solid #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.custom-image-frame.shape-square {
+  border-radius: 6px;
+}
+
+.custom-image-frame.shape-circle {
+  border-radius: 999px;
+}
+
+.custom-image-frame.shape-star {
+  clip-path: polygon(
+    50% 2%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 92%,
+    50% 72%,
+    21% 92%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+.custom-image-frame.shape-certificate {
+  /* simple certificate-like octagon */
+  clip-path: polygon(
+    15% 0%,
+    85% 0%,
+    100% 15%,
+    100% 85%,
+    85% 100%,
+    15% 100%,
+    0% 85%,
+    0% 15%
+  );
+}
+
+.custom-image-frame.shape-heart {
+  clip-path: polygon(
+    50% 90%,
+    10% 55%,
+    2% 35%,
+    10% 18%,
+    25% 12%,
+    40% 18%,
+    50% 30%,
+    60% 18%,
+    75% 12%,
+    90% 18%,
+    98% 35%,
+    90% 55%
+  );
+}
+
+.custom-image-placeholder-icon {
+  font-size: 2.2rem;
+  opacity: 0.85;
+}
+
+.custom-image-placeholder-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0 6px;
+}
+
+.custom-image-placeholder-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

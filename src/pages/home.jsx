@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import DiscountBanner from "../components/DiscountBanner";
 import Footer from "../components/Footer";
 import ProductCard from "../components/ProductCard";
 import { regionData } from "../data/country";
@@ -12,14 +13,122 @@ import homeIcon from "../assets/homeware.png";
 import wallIcon from "../assets/wallart.png";
 import hatsIcon from "../assets/hats.png";
 import accIcon from "../assets/acces.png";
+import na1 from "../assets/newarrive/1.webp";
+import na2 from "../assets/newarrive/2.webp";
+import na3 from "../assets/newarrive/3.webp";
+import na4 from "../assets/newarrive/4.webp";
+import na5 from "../assets/newarrive/5.webp";
+import na6 from "../assets/newarrive/6.webp";
 
 import "../styles/Home.css";
+
+import idea1 from "../assets/design/idea_1.png";
+import idea2 from "../assets/design/idea_2.png";
+import idea3 from "../assets/design/idea_3.png";
+import idea4 from "../assets/design/idea_4.png";
+import idea5 from "../assets/design/idea_5.png";
+
+const MOCK_DESIGN_IDEAS = [
+  {
+    id: "idea-1",
+    title: "Western Truck",
+    description: "Vintage LLWestern pig dog & big hogs theme.",
+    image_path: idea1,
+  },
+  {
+    id: "idea-2",
+    title: "Outdoor Adventure",
+    description: "Classic LLWestern retro truck design.",
+    image_path: idea2,
+  },
+  {
+    id: "idea-3",
+    title: "Camp Vibes Only",
+    description: "Relaxed outdoor spirit and nature vibes.",
+    image_path: idea3,
+  },
+  {
+    id: "idea-4",
+    title: "Tennis Club",
+    description: "City people city life urban sport style.",
+    image_path: idea4,
+  },
+  {
+    id: "idea-5",
+    title: "Cowboy Wood Hero",
+    description: "Classic Howdy Woody Austin TX 2024 design.",
+    image_path: idea5,
+  },
+];
+
+export const NEW_ARRIVALS = [
+  {
+    id: 101,
+    name: "Just a Simple Grandpa Who Loves Cycling",
+    label: "Classic Unisex T-shirt",
+    price: "€21.99",
+    image: na1,
+    colors: [
+      { hex: "#ffffff" }, { hex: "#ff5722" }, { hex: "#d32f2f" }, { hex: "#28a745" }, { hex: "#888888" }, { hex: "#ffeb3b" }, { hex: "#425c48" }
+    ]
+  },
+  {
+    id: 102,
+    name: "Just a Simple Grandpa Who Loves Fishing",
+    label: "Classic Unisex T-shirt",
+    price: "€22.50",
+    image: na2,
+    colors: [
+      { hex: "#ffffff" }, { hex: "#ff5722" }, { hex: "#d32f2f" }, { hex: "#28a745" }, { hex: "#888888" }
+    ]
+  },
+  {
+    id: 103,
+    name: "Best Grandpa & Cycling Enthusiast",
+    label: "Classic Unisex T-shirt",
+    price: "€19.99",
+    image: na3,
+    colors: [
+      { hex: "#ffffff" }, { hex: "#ff5722" }, { hex: "#d32f2f" }, { hex: "#28a745" }, { hex: "#888888" }, { hex: "#ffeb3b" }, { hex: "#425c48" }, { hex: "#000000" }
+    ]
+  },
+  {
+    id: 104,
+    name: "Just a Simple Grandpa Who Loves Motorcycles",
+    label: "Classic Unisex T-shirt",
+    price: "€23.99",
+    image: na4,
+    colors: [
+      { hex: "#ffffff" }, { hex: "#000000" }, { hex: "#888888" }, { hex: "#d32f2f" }
+    ]
+  },
+  {
+    id: 105,
+    name: "Don't Disturb Me: F1 in Progress",
+    label: "Classic Unisex T-shirt",
+    price: "€20.95",
+    image: na5,
+    colors: [
+      { hex: "#ffffff" }, { hex: "#ff5722" }, { hex: "#d32f2f" }, { hex: "#28a745" }, { hex: "#888888" }, { hex: "#ffeb3b" }
+    ]
+  },
+  {
+    id: 106,
+    name: "Don't Disturb Me: Watching MotoGP",
+    label: "Classic Unisex T-shirt",
+    price: "€21.50",
+    image: na6,
+    colors: [
+      { hex: "#ffffff" }, { hex: "#ff5722" }, { hex: "#d32f2f" }, { hex: "#28a745" }, { hex: "#888888" }, { hex: "#ffeb3b" }, { hex: "#425c48" }, { hex: "#000000" }, { hex: "#ba7f8c" }
+    ]
+  }
+];
 
 const Home = () => {
   // --- 1. STATE MANAGEMENT ---
   const [region, setRegion] = useState("denmark");
   const [activeLabel, setActiveLabel] = useState("");
-  const [designIdeas, setDesignIdeas] = useState([]);
+  const [designIdeas] = useState(MOCK_DESIGN_IDEAS);
   const [visibleIdeas, setVisibleIdeas] = useState(4); // phần design
   const [visibleProducts, setVisibleProducts] = useState(6); // phần country
 
@@ -31,42 +140,6 @@ const Home = () => {
   const designIdeasRef = useRef(null); // Ref cho cuộn về đầu phần Ý tưởng
 
   // --- 3. DATA FETCHING ---
-  useEffect(() => {
-    // Dữ liệu giả lập (Sau này thay bằng fetch API từ PHP)
-    const mockData = [
-      {
-        id: 1,
-        title: "Idea 1",
-        description: "Vintage Fishing style",
-        image_path: "https://picsum.photos/400/300?random=1",
-      },
-      {
-        id: 2,
-        title: "Idea 2",
-        description: "Moto Custom design",
-        image_path: "https://picsum.photos/400/300?random=2",
-      },
-      {
-        id: 3,
-        title: "Idea 3",
-        description: "Beer & Grill vibes",
-        image_path: "https://picsum.photos/400/300?random=3",
-      },
-      {
-        id: 4,
-        title: "Idea 4",
-        description: "Nordic Minimalist",
-        image_path: "https://picsum.photos/400/300?random=4",
-      },
-      {
-        id: 5,
-        title: "Idea 5",
-        description: "New Era Sport",
-        image_path: "https://picsum.photos/400/300?random=5",
-      },
-    ];
-    setDesignIdeas(mockData);
-  }, []);
   // // Lấy dữ liệu từ API
   // useEffect(() => {
   //   fetch("http://localhost/api/get_design_ideas.php")
@@ -134,19 +207,18 @@ const Home = () => {
         );
   // phần icon sản phẩm
   const spotlightData = [
-    {
-      id: 1,
-      name: "T-Shirt",
-      image: tshirtIcon,
-    },
+    { id: 1, name: "T-Shirt", image: tshirtIcon },
     { id: 2, name: "Drinkware", image: drinkIcon },
     { id: 3, name: "Homeware", image: homeIcon },
     { id: 4, name: "Wall art", image: wallIcon },
     { id: 5, name: "Hats", image: hatsIcon },
-    { id: 6, name: "Accesories", image: accIcon },
+    { id: 6, name: "Accessories", image: accIcon },
   ];
+
+
   return (
     <div className="home-container">
+      <DiscountBanner />
       <Navbar />
 
       {/* Hero Section */}
@@ -199,17 +271,10 @@ const Home = () => {
           </div>
         </div>
         <div className="product-scroll" ref={newArrivalsRef}>
-          {[1, 2, 3, 4, 5, 6].map((id) => (
+          {NEW_ARRIVALS.map((product) => (
             <ProductCard
-              key={id}
-              product={{
-                id,
-                name: "Nike Air Jordan 4 Retro",
-                label: "Original",
-                price: "6,299,000đ",
-                image:
-                  "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/070f368f-a90f-48e0-a4ef-a270f277150a/NIKE+AIR+JORDAN+4+RETRO+RM.png",
-              }}
+              key={product.id}
+              product={product}
             />
           ))}
         </div>
@@ -295,46 +360,70 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Design Inspiration Section (Grid with View More) */}
-      <section className="design-inspiration" ref={designIdeasRef}>
-        <div className="inspiration-header">
-          <div className="header-text">
-            <h2 className="section-label">DESIGN IDEAS</h2>
-            <p className="quote-text">
-              "Every great design begins with an even better story. Let's tell
-              yours."
-            </p>
-          </div>
+      {/* Design Inspiration Section (Curator Editorial Layout) */}
+      <section className="px-8 md:px-12 py-24 max-w-[1920px] mx-auto bg-white" ref={designIdeasRef}>
+        <div className="max-w-4xl mb-16">
+          <h1 className="font-headline font-black text-4xl md:text-5xl tracking-tighter mb-6 text-primary uppercase">
+            DESIGN IDEAS
+          </h1>
+          <p className="font-body italic text-xl md:text-2xl text-secondary max-w-2xl leading-relaxed">
+            Every great design begins with an even better story. Let's tell yours.
+          </p>
         </div>
 
-        <div className="idea-grid">
-          {designIdeas.slice(0, visibleIdeas).map((idea) => (
-            <div key={idea.id} className="idea-card">
-              <div className="idea-image">
-                <img src={idea.image_path} alt={idea.title} />
-                <span className="badge">Idea</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-20">
+          {designIdeas.slice(0, visibleIdeas).map((idea, index) => {
+            // Refined asymmetrical offset classes for 4-column layout
+            let offsetClass = "";
+            if (index === 1 || index === 3) offsetClass = "md:mt-12";
+            if (index === 2) offsetClass = "lg:-mt-12";
+
+            return (
+              <div key={idea.id} className={`flex flex-col group ${offsetClass}`}>
+                <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-surface-container mb-6">
+                  <img
+                    alt={idea.title}
+                    className="w-full h-full object-cover transition-all duration-700 ease-in-out scale-105 group-hover:scale-100"
+                    src={idea.image_path}
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-primary text-on-primary px-2.5 py-1 rounded-full text-[9px] font-headline font-black tracking-widest uppercase">
+                      IDEA
+                    </span>
+                  </div>
+                </div>
+                <div className="flex flex-col space-y-3">
+                  <div>
+                    <h3 className="font-headline font-bold text-xl tracking-tight text-primary">
+                      {idea.title}
+                    </h3>
+                    <p className="font-body italic text-secondary text-lg">
+                      {idea.description}
+                    </p>
+                  </div>
+                  <button className="w-fit bg-primary text-on-primary px-6 py-3 rounded-full font-headline font-bold text-[10px] tracking-widest uppercase hover:opacity-80 active:scale-95 transition-all">
+                    Pick this style
+                  </button>
+                </div>
               </div>
-              <div className="idea-info">
-                <h3>{idea.title}</h3>
-                <p>{idea.description}</p>
-                <button className="btn-apply">Pick this style</button>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        <div className="view-more-container">
+        <div className="view-more-container mt-24">
           {visibleIdeas < designIdeas.length ? (
             <button
-              className="btn-view-more"
-              onClick={() => setVisibleIdeas((prev) => prev + 4)}
+              className="bg-primary text-on-primary px-10 py-4 rounded-full font-headline font-black text-xs tracking-widest uppercase hover:opacity-90 active:scale-95 transition-all"
+              onClick={() => setVisibleIdeas(designIdeas.length)}
             >
               View more products
             </button>
           ) : (
-            <button className="btn-back-section" onClick={scrollToDesignTop}>
-              Back to Design Top{" "}
-              <i className="fa-solid fa-arrow-up-to-line"></i>
+            <button
+              className="border border-primary text-primary px-8 py-4 rounded-full font-headline font-bold text-sm tracking-widest uppercase hover:bg-surface-container active:scale-95 transition-all flex items-center gap-4"
+              onClick={scrollToDesignTop}
+            >
+              Back to Design Top <i className="fa-solid fa-arrow-up-to-line"></i>
             </button>
           )}
         </div>

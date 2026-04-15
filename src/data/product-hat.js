@@ -183,15 +183,15 @@ export const productsHat=[
         id: "HAT-cap-0013", 
         category: "hat", 
         subCategory: "cap", 
-        name: "Classic Unisex T-shirt", 
-        brand: "Gildan 64000, Gildan 5000",
-        technology: "DTG",
-        fulfilledFrom: ["Europe", "United Kingdom", "United States"],
+        name: "5 Panel Skater Snapback", 
+        brand: "Pacific Headwear 4D7",
+        technology: "Hybrid",
+        fulfilledFrom: ["United States"],
         sizes: { total: 1, range: "Adult" },
         colors: [
             "#000000", "#002855", "#E30626", "#050921", "#FFFFFF", "#000000", "#333333", "#3B3B3B", "#808080", "#808080", "#050921"
           ],
-        price: 10.32,
+        price: 10.87,
         image: "../assets/hat-cap/hat-cap-13.webp" 
       },
       { 

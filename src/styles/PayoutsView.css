@@ -1,0 +1,277 @@
+.payouts-container {
+  padding: 2.4rem 4rem;
+  max-width: 140rem;
+  margin: 0 auto;
+}
+
+.payouts-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.4rem;
+  color: #3b82f6;
+  margin-bottom: 2.4rem;
+}
+
+.payouts-breadcrumb span {
+  color: #64748b;
+}
+
+.payouts-header {
+  margin-bottom: 2.4rem;
+}
+
+.payout-header-row {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.btn-back-square {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.8rem;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-back-square:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.payouts-header h1 {
+  font-size: 3.6rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.timezone-link-v2 {
+  font-size: 1.4rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.timezone-link-v2 a {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Wallets List View */
+.wallets-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin-top: 2rem;
+}
+
+.wallet-card-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.8rem 2.4rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.8rem;
+}
+
+.wallet-info {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.wallet-info .balance {
+  font-weight: 500;
+  color: #64748b;
+}
+
+.btn-view-wallet {
+  padding: 0.7rem 1.6rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.6rem;
+  background: #ffffff;
+  color: #1e293b;
+  font-size: 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Horizontal Scorecards (Detailed View) */
+.scorecards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 3.2rem;
+}
+
+.scorecard-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.8rem 2.4rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.8rem;
+}
+
+.scorecard-label {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.scorecard-content {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+}
+
+.scorecard-value {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.btn-add-method {
+  background: #0052cc;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.6rem;
+  padding: 0.8rem 1.6rem;
+  font-size: 1.45rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Tabs & Tables */
+.payout-tabs-container-v3 {
+  display: flex;
+  gap: 3.2rem;
+  border-bottom: 2px solid #f1f5f9;
+  margin-bottom: 1.6rem;
+}
+
+.payout-tab-v3 {
+  background: none;
+  border: none;
+  padding: 1.2rem 0;
+  font-size: 1.55rem;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  position: relative;
+}
+
+.payout-tab-v3.active {
+  color: #1e293b;
+}
+
+.payout-tab-v3.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #3b82f6;
+}
+
+.payout-table-area-v3 {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.8rem;
+  overflow-x: auto;
+}
+
+.payout-table-v3 {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.payout-table-v3 th {
+  padding: 1.2rem 2.4rem;
+  text-align: left;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.payout-table-v3 td {
+  padding: 1.8rem 2.4rem;
+  font-size: 1.4rem;
+  color: #475569;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.entry-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.4rem;
+}
+
+.entry-badge i {
+  color: #2563eb;
+  font-size: 1.2rem;
+}
+
+/* Pagination V3 */
+.pagination-v3 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 3.2rem;
+  padding: 1.6rem 2.4rem;
+  font-size: 1.35rem;
+  color: #64748b;
+}
+
+.rows-per-page {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.rows-select {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 3.2rem;
+}
+
+.pagination-controls i {
+  cursor: pointer;
+  color: #cbd5e1;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}

@@ -1,5 +1,22 @@
 # React + Vite
 
+## Node version
+
+Vite requires Node `22.12+` (or `20.19+`). This repo pins Node `22.12.0` via `.nvmrc`/`.node-version` and `package.json#engines`.
+
+- If you use `nvm`: `nvm install && nvm use`
+- If you use Homebrew: install `node@22` and ensure it is first on your `PATH`.
+
+## Run full app (client + server)
+
+Login/Signup requires the backend in `server/`.
+
+- Start both client and server:
+	- `npm run dev:full`
+- Or start them separately:
+	- Client: `npm run dev`
+	- Server: `npm --prefix server run dev`
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

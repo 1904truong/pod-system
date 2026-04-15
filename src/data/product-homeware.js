@@ -88,6 +88,7 @@ export const productsHomeware=[
         price: 13.57,
         image: "../assets/homeware-mats/mats-homeware-3.webp" 
       },
+
       //Blankets
       { 
         id: "HOMEWARE-BLANKETS-001", 
@@ -118,7 +119,7 @@ export const productsHomeware=[
         image: "../assets/homeware-blankets/blanket-homeware-2.webp" 
       },
       { 
-        id: "HOMEWARE-BLANKETS-001", 
+        id: "HOMEWARE-BLANKETS-003", 
         category: "homeware", 
         subCategory: "blankets", 
         name: "Coral Fleece Blanket 60 x 80", 
@@ -131,6 +132,7 @@ export const productsHomeware=[
         price: 42.76,
         image: "../assets/homeware-blankets/blanket-homeware-3.webp" 
       },
+
       //Ornament
 
       { 
@@ -272,7 +274,7 @@ export const productsHomeware=[
       },
       // Yard Sign
       { 
-        id: "HOMEWARE-YARDSIGN-006", 
+        id: "HOMEWARE-YARDSIGN-001", 
         category: "homeware", 
         subCategory: "yardsign", 
         name: "Yard Sign", 
@@ -286,16 +288,16 @@ export const productsHomeware=[
         image: "../assets/homeware-ornament/yardsign-homeware-1.webp" 
       },
       { 
-        id: "HOMEWARE-CANDLE-006", 
+        id: "HOMEWARE-CANDLE-002", 
         category: "homeware", 
         subCategory: "candle", 
-        name: "Yard Sign", 
+        name: "Scented Candle", 
         fulfilledFrom: ["Europe","United States"],
-        sizes: { total: 3, range: "One-4 Pack" },
+        sizes: { total: 1, range: "10 oz" },
         colors: [
-            "#FFFFFF"
+            "#FBF9E6","#FBF9E6","#FBF9E6","#FBF9E6"
           ],
-        price: 14.98,
-        image: "../assets/homeware-ornament/yardsign-homeware-1.webp" 
+        price: 16.80,
+        image: "../assets/homeware-ornament/candle-homeware-1.webp" 
       },
 ]
